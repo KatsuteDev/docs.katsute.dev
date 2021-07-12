@@ -23,7 +23,9 @@
                             {% if __lang[0] != lang %}
                                 <li>
                                     {% capture __path %}{% include function/resolve-path.liquid path=page.path %}{% endcapture %}
-                                    <a class="dropdown-item" href="/{{ __lang[0] }}/{{ __path | remove_first: '/' | remove_first: lang | remove_first: '/' }}">
+                                    {% assign __path = __path | remove_first: '/' | remove_first: lang | remove_first: '/' %}
+                                    {% capture __path %}{% include function/remove-extension.liquid path=__path %}{% endcapture %}
+                                    <a class="dropdown-item" href="/{{ __lang[0] }}/{{ __path }}">
                                         {{ __lang[1].name }}
                                     </a>
                                 </li>
@@ -33,16 +35,19 @@
                 </li>
                 <li class="d-block d-lg-none"><hr class="text-white dropdown-divider"></li>
                 {% comment %} mobile nav {% endcomment %}
+                {% assign __this = page.url | split: '/' | slice: 2 | first %}
                 {% for __page in site.pages %}
-                    {% assign __arr = __page.url | split: '/' %}
-                    {% if __arr[1] != lang %}
+                    {% assign __arr = __page.path | split: '/' %}
+                    {% if __arr[0] != lang %}
                         {% continue %}
                     {% endif %}
-                    {% assign __folderIndex = __arr[3] %}
+                    {% assign __folderIndex = __arr[2] %}
                     {% if __folderIndex == "README.md" or __folderIndex == "README.html" or __folderIndex == "index.html" %}
                         {% assign __title = __page.title %}
+                        {% capture __folder %}{% include function/resolve-path.liquid path=__page.path %}{% endcapture %}
+                        {% capture __folderName %}{% include function/get-file.liquid path=__folder %}{% endcapture %}
                         <li title="{{ __title }}" class="nav-item d-block d-lg-none">
-                            <a class="nav-link" href="{% include function/resolve-path.liquid path=__page.path %}">
+                            <a class="nav-link{% if __this == __folderName %} active{% endif %}" href="{{ __folder }}">
                                 {{ __page.title }}
                             </a>
                         </li>

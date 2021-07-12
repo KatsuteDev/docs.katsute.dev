@@ -22,7 +22,7 @@
         "prepare": "npm run clean && npm run build",
         "// -- start -- //": "",
         "start": "echo \"Error: no start script specified\" && exit 1",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",

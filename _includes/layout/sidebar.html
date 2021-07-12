@@ -1,4 +1,4 @@
-<div class="d-none d-lg-block c+bg-darker e+sidebar pb-5">
+<div class="c+bg-darker e+sidebar">
     {% comment %} header {% endcomment %}
     <div class="p-3 position-sticky top-0 c+bg-darker" style="z-index: 9000">
         <div class="d-flex align-items-center position-relative">
@@ -9,21 +9,19 @@
         </div>
     </div>
     {% comment %} navigation {% endcomment %}
-    <nav class="text-white">
+    <nav>
         {% assign __len = page.path | split: '/' | size %}
         {% if __len <= 2 %}
             {% comment %} all repos {% endcomment %}
-            <ul class="mt-4">
+            <ul>
                 {% for __page in site.pages %}
-                    {% assign __arr = __page.url | split: '/' %}
-                    {% if __arr[1] != lang %}
-                        {% continue %}
-                    {% endif %}
-                    {% assign __folderIndex = __arr[3] %}
-                    {% if __folderIndex == "README.md" or __folderIndex == "README.html" or __folderIndex == "index.html" %}
+                    {% assign __arr = __page.path | split: '/' %}
+                    {% if __arr[0] != lang %}{% continue %}{% endif %}
+                    {% assign __folderIndex = __arr[2] | downcase %}
+                    {% if __folderIndex == "readme.md" or __folderIndex == "readme.html" or __folderIndex == "index.html" %}
                         {% assign __title = __page.title %}
-                        <li title="{{ __title }}" class="position-relative ps-3 py-2">
-                            <a class="text-white text-decoration-none stretched-link" href="{% include function/resolve-path.liquid path=__page.path %}">
+                        <li title="{{ __title }}">
+                            <a class="nav-link text-white text-decoration-none stretched-link" href="{% include function/resolve-path.liquid path=__page.path %}">
                                 {{ __page.title }}
                             </a>
                         </li>
@@ -32,8 +30,61 @@
             </ul>
         {% else %}
             {% comment %} internal {% endcomment %}
-            <ul>
+            <ul class="mt-0">
+                {% capture __title %}{% include function/get-translation.liquid key="docs.all_projects" %}{% endcapture %}
+                {% comment %} all projects {% endcomment %}
+                <li title="{{ __title }}">
+                    <a class="small" href="/{{ lang }}">
+                        <i class="fas fa-arrow-left"></i> {{ __title }}
+                    </a>
+                </li>
+                {% comment %} project {% endcomment %}
+                {% assign __folder = page.path | split: '/' | slice: 1 | first %}
+                {% for __page in site.pages %}
+                    {% assign __indexes = __page.path | split: '/' %}
+                    {% if __indexes[0] == lang and __indexes[1] == __folder %}
+                        {% assign __index = __indexes[2] | downcase %}
+                        {% if __index == "index.html" or __index == "readme.md" or __index == "readme.html" %}
+                            {% assign __title = __page.title %}
+                            {% break %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
 
+                <li title="{{ __title }}">
+                    <a class="text-secondary" href="/{{lang}}/{{ __folder }}">
+                        {{ __title }}
+                    </a>
+                </li>
+                {% comment %} links {% endcomment %}
+                {% for __page in site.pages %}
+                    {% assign __indexes = __page.path | split: '/' %}
+                    {% assign __file = __indexes[2] | downcase %}
+                    {% capture __name %}{% include function/get-file.liquid path=__page.path %}{% endcapture %}
+                    {% capture __ext %}{% include function/get-extension.liquid path=__page.path %}{% endcapture %}
+                    {% assign __len = __indexes | size %}
+                    {% if
+                        __indexes[0] == lang and
+                        __indexes[1] == __folder and
+                        __file != "index.html" and
+                        __file != "readme.md" and
+                        __file != "readme.html" and
+                        __name != __ext and
+                        __len == 3
+                    %}
+                        {% capture __filename %}{% include function/remove-extension.liquid path=__page.path %}{% endcapture %}
+                        {% if __page.title %}
+                            {% assign __title = __page.title %}
+                        {% else %}
+                            {% assign __title = __filename %}
+                        {% endif %}
+                        <li title="{{ __title }}">
+                            <a href="/{{ lang }}/{{ __folder }}/{{ __filename }}">
+                                {{ __title }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         {% endif %}
     </nav>

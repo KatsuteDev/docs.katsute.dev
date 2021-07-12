@@ -1,1 +1,45 @@
-ar
+<div class="container">
+    <div class="m-5">
+        <article class="e+article row m-0">
+            {% comment %} header {% endcomment %}
+            <div class="order-1 col-12">
+                <h1 class="my-4">
+                    {% if page.title %}
+                        {{ page.title }}
+                    {% else %}
+                        {% include function/get-file.liquid path=page.path %}
+                    {% endif %}
+                </h1>
+                {% if page.description %}
+                    <p class="mb-4 h5">
+                        {{ page.description }}
+                    </p>
+                {% endif %}
+            </div>
+            {% comment %} toc {% endcomment %}
+            {% assign _breakpoint = "xl" %}
+            <div class="e+markdown-toc order-2 order-{{ _breakpoint }}-last col-12 col-{{ _breakpoint }}-3">
+                <div class="ms-{{ _breakpoint }}-3">
+                    <h2 id="table-of-contents" class="h6 fw-bold mb-0">
+                        <a class="text-body" href="#table-of-contents">
+                            {% include function/get-translation.liquid key="article.in_this_article" %}
+                        </a>
+                    </h2>
+                    <hr class="my-0">
+                    {% include import/toc.html html=content %}
+                    <hr class="mt-0 mb-5 d-{{ _breakpoint }}-none">
+                </div>
+            </div>
+            {% comment %} article {% endcomment %}
+            <div class="e+markdown order-3 col-12 col-{{ _breakpoint }}-9">
+                <div class="me-{{ _breakpoint }}-3">
+                    {% include import/anchor_headings.html
+                        html=content
+                        anchorBody='#'
+                        anchorClass="text-decoration-none"
+                    %}
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

@@ -30,6 +30,11 @@ plugins:
   - jekyll-optional-front-matter
   - jekyll-readme-index
 
+readme_index:
+  enabled:          true
+  remove_originals: true
+  with_frontmatter: true
+
 sass:
   load_paths:
     - dependencies/katsute/css

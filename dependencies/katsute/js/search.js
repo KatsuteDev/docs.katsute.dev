@@ -1,0 +1,4 @@
+---
+layout: compress
+---
+"use strict";

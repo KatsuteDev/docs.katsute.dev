@@ -17,7 +17,7 @@ Returns the file name from a path.
 Example usage:
 
 ```
-{% include function/get-file path=page.path %}
+{% include function/get-file.liquid path=page.path %}
 ```
 
 ### get-lang
@@ -49,6 +49,16 @@ en:
 ```
 ```
 Docs
+```
+
+### remove-extension
+
+Returns the file name from a path without the extension.
+
+Example usage:
+
+```
+{% include function/remove-extension.liquid path=page.path %}
 ```
 
 ### resolve-path

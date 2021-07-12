@@ -1,5 +1,7 @@
 en:
   name: English
+  article:
+    in_this_article: In this article
   contributing:
     title: Help maintain our documentation.
     subtitle: All documentation is open source. Submit a pull request if something is wrong or if you want to make an improvement.
@@ -7,6 +9,7 @@ en:
     guidelines: View contribution guidelines
   docs:
     title: Docs
+    all_projects: All projects
   footer:
     github: GitHub
     issues: Issues

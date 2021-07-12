@@ -94,6 +94,12 @@ nav li::before {
 
 .e\+ {
     &sidebar {
+
+        @extend
+            .d-none,
+            .d-lg-block,
+            .pb-5;
+
         width    : 275px;
         min-width: 275px;
         max-width: 275px;
@@ -101,5 +107,130 @@ nav li::before {
 
         overflow-y: scroll;
         overflow-x: hidden;
+
+        nav {
+
+            ul {
+
+                @extend .navbar-nav;
+
+                margin-top: 53px;
+
+                li {
+                    @extend
+                        .nav-item,
+                        .position-relative,
+                        .ps-3, .py-2;
+
+                    a {
+                        @extend
+                            .nav-link,
+                            .text-decoration-none,
+                            .stretched-link;
+
+                        &:not(.text-secondary){
+                            @extend.text-white;
+                        }
+                    }
+                }
+
+            }
+
+        }
+
     }
+
+    &footer {
+
+        @extend .py-3;
+
+        ul {
+
+            li {
+
+                @extend .nav-item;
+
+                &:first-of-type {
+
+                    @extend .text-secondary;
+
+                }
+
+                &:not(:first-of-type) {
+
+                    @extend .ps-3;
+
+                }
+
+                a {
+
+                    @extend
+                        .nav-link,
+                        .p-0;
+
+                }
+
+            }
+
+        }
+
+    }
+
+    &markdown {
+
+        h {
+
+            &1, &2, &3, &4, &5, &6 {
+
+                @extend
+                    .pt-3,
+                    .my-3;
+
+            }
+
+        }
+
+    }
+
+    &markdown-toc {
+
+        > div {
+
+            @extend
+                .position-sticky,
+                .w-100;
+            top: 1rem;
+
+            > ul {
+
+                @extend .my-2;
+
+            }
+
+        }
+
+        ul {
+
+            @extend
+                .ps-0,
+                .list-unstyled;
+
+        }
+
+        li > ul {
+
+            @extend .ps-3;
+
+        }
+
+        a {
+
+            @extend
+                .small,
+                .text-decoration-none;
+
+        }
+
+    }
+
 }
