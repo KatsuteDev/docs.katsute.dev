@@ -95,10 +95,7 @@ nav li::before {
 .e\+ {
     &sidebar {
 
-        @extend
-            .d-none,
-            .d-lg-block,
-            .pb-5;
+        @extend .pb-5;
 
         width    : 275px;
         min-width: 275px;
