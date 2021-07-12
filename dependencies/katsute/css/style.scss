@@ -95,6 +95,8 @@ nav li::before {
 .e\+ {
     &sidebar {
 
+        @extend .d-none;
+        @extend .d-lg-block;
         @extend .pb-5;
 
         width    : 275px;
@@ -114,20 +116,21 @@ nav li::before {
                 margin-top: 53px;
 
                 li {
-                    @extend
-                        .nav-item,
-                        .ps-3, .py-2;
 
-                    position: relative;
+                    @extend .nav-item;
+                    @extend .position-relative;
+                    @extend .ps-3, .py-2;
 
                     a {
-                        @extend
-                            .nav-link,
-                            .text-decoration-none,
-                            .stretched-link;
+
+                        @extend .nav-link;
+                        @extend .text-decoration-none;
+                        @extend .stretched-link;
 
                         &:not(.text-secondary){
-                            @extend.text-white;
+
+                            @extend .text-white;
+
                         }
                     }
                 }
@@ -162,9 +165,8 @@ nav li::before {
 
                 a {
 
-                    @extend
-                        .nav-link,
-                        .p-0;
+                    @extend .nav-link;
+                    @extend .p-0;
 
                 }
 
@@ -180,9 +182,8 @@ nav li::before {
 
             &1, &2, &3, &4, &5, &6 {
 
-                @extend
-                    .pt-3,
-                    .my-3;
+                @extend .pt-3;
+                @extend .my-3;
 
             }
 
@@ -194,9 +195,9 @@ nav li::before {
 
         > div {
 
-            @extend
-                .position-sticky,
-                .w-100;
+            @extend .position-sticky;
+            @extend .w-100;
+
             top: 1rem;
 
             > ul {
@@ -209,9 +210,8 @@ nav li::before {
 
         ul {
 
-            @extend
-                .ps-0,
-                .list-unstyled;
+            @extend .ps-0;
+            @extend .list-unstyled;
 
         }
 
@@ -223,9 +223,8 @@ nav li::before {
 
         a {
 
-            @extend
-                .small,
-                .text-decoration-none;
+            @extend .small;
+            @extend .text-decoration-none;
 
         }
 
