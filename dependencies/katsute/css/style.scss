@@ -116,8 +116,9 @@ nav li::before {
                 li {
                     @extend
                         .nav-item,
-                        .position-relative,
                         .ps-3, .py-2;
+
+                    position: relative;
 
                     a {
                         @extend
