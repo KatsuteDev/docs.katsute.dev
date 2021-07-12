@@ -1,0 +1,31 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+{% capture lang %}{% include function/get-lang.liquid %}{% endcapture %}
+<html lang="{{ lang }}">
+
+    {% include layout/head.html %}
+
+    <body class="d-lg-flex">
+
+        {% include layout/sidebar.html %}
+
+        <main class="w-100 mh-100 overflow-auto">
+            {% include layout/header.html %}
+
+            {% assign __this = page.path | split: '/' | slice: 1 | first | downcase %}
+            {% if __this == "index.html" or __this == "readme.md" %}
+                {% include layout/homepage.html %}
+            {% else %}
+                {% include layout/article.html %}
+            {% endif %}
+
+            {% include layout/contributing.html %}
+            {% include layout/footer.html %}
+        </main>
+
+        {% include layout/foot.html %}
+
+    </body>
+</html>

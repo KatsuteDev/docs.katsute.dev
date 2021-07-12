@@ -1,0 +1,40 @@
+<div class="d-none d-lg-block c+bg-darker e+sidebar pb-5">
+    {% comment %} header {% endcomment %}
+    <div class="p-3 position-sticky top-0 c+bg-darker" style="z-index: 9000">
+        <div class="d-flex align-items-center position-relative">
+            <img class="user-select-none" width="30" height="30" src="/dependencies/katsute/assets/favicon.ico">
+            <a class="h5 ms-1 mb-0 text-white text-decoration-none stretched-link user-select-none" href="/{{ lang }}">
+                {% include function/get-translation.liquid key="docs.title" %}
+            </a>
+        </div>
+    </div>
+    {% comment %} navigation {% endcomment %}
+    <nav class="text-white">
+        {% assign __len = page.path | split: '/' | size %}
+        {% if __len <= 2 %}
+            {% comment %} all repos {% endcomment %}
+            <ul class="mt-4">
+                {% for __page in site.pages %}
+                    {% assign __arr = __page.url | split: '/' %}
+                    {% if __arr[1] != lang %}
+                        {% continue %}
+                    {% endif %}
+                    {% assign __folderIndex = __arr[3] %}
+                    {% if __folderIndex == "README.md" or __folderIndex == "README.html" or __folderIndex == "index.html" %}
+                        {% assign __title = __page.title %}
+                        <li title="{{ __title }}" class="position-relative ps-3 py-2">
+                            <a class="text-white text-decoration-none stretched-link" href="{% include function/resolve-path.liquid path=__page.path %}">
+                                {{ __page.title }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            {% comment %} internal {% endcomment %}
+            <ul>
+
+            </ul>
+        {% endif %}
+    </nav>
+</div>

@@ -1,0 +1,47 @@
+# Development
+
+livereload: true
+port: 8000
+open_url: true
+strict_front_matter: true
+
+# Site
+
+timezone: America/New_York
+url: https://docs.katsute.dev
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - /dependencies/node/bootstrap/scss
+  - /node_modules
+  - /CNAME
+  - /LICENSE
+  - /README.md
+
+  - /src
+  - /package*.json
+
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+
+sass:
+  load_paths:
+    - dependencies/katsute/css
+    - dependencies/node/bootstrap/scss
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: []
+  ignore:
+    envs: []
+  blanklines: false
+  profile: false
+  startings: []

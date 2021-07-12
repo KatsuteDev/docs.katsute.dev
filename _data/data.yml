@@ -1,0 +1,8 @@
+footer:
+  links:
+    - name: GitHub
+      link: https://github.com/KatsuteDev
+    - name: Issues
+      link: https://github.com/KatsuteDev/docs/issues
+    - name: Contributing
+      link: /contributing

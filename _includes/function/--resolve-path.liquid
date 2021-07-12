@@ -1,0 +1,7 @@
+{% assign __file = include.path | split: '/' | last | downcase %}
+{% if __file == "index.html" or __file == "readme.md" or __file == "readme.html" %}
+    {% assign __len = include.path | split: '/' | size | minus: 1 %}
+    /{{ include.path | split: '/' | slice: 0, __len | join: '/' }}
+{% else %}
+    /{{ include.path | split: '/' | join: '/' }}
+{% endif %}

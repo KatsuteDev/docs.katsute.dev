@@ -1,0 +1,17 @@
+en:
+  name: English
+  contributing:
+    title: Help maintain our documentation.
+    subtitle: All documentation is open source. Submit a pull request if something is wrong or if you want to make an improvement.
+    make-a-contribution: Make a contribution
+    guidelines: View contribution guidelines
+  docs:
+    title: Docs
+  footer:
+    github: GitHub
+    issues: Issues
+    contributing: Contributing
+jp:
+  name: 日本語
+cn:
+  name: 中国人

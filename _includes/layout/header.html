@@ -1,0 +1,54 @@
+<div class="p-2 border-bottom c+bg-darker">
+    <div class="d-block d-lg-none">
+        <div class="d-flex justify-content-center align-items-center position-relative">
+            <img class="user-select-none" width="30" height="30" src="/dependencies/katsute/assets/favicon.ico">
+            <a class="h5 ms-1 mb-0 text-white text-decoration-none stretched-link user-select-none" href="/{{ lang }}">
+                {% include function/get-translation.liquid key="docs.title" %}
+            </a>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark py-0 mx-5">
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ms-lg-auto">
+                {% comment %} language {% endcomment %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown">
+                        {% include function/get-translation.liquid key="name" %}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark c+bg-darker">
+                        {% for __lang in site.data.translations %}
+                            {% if __lang[0] != lang %}
+                                <li>
+                                    {% capture __path %}{% include function/resolve-path.liquid path=page.path %}{% endcapture %}
+                                    <a class="dropdown-item" href="/{{ __lang[0] }}/{{ __path | remove_first: '/' | remove_first: lang | remove_first: '/' }}">
+                                        {{ __lang[1].name }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="d-block d-lg-none"><hr class="text-white dropdown-divider"></li>
+                {% comment %} mobile nav {% endcomment %}
+                {% for __page in site.pages %}
+                    {% assign __arr = __page.url | split: '/' %}
+                    {% if __arr[1] != lang %}
+                        {% continue %}
+                    {% endif %}
+                    {% assign __folderIndex = __arr[3] %}
+                    {% if __folderIndex == "README.md" or __folderIndex == "README.html" or __folderIndex == "index.html" %}
+                        {% assign __title = __page.title %}
+                        <li title="{{ __title }}" class="nav-item d-block d-lg-none">
+                            <a class="nav-link" href="{% include function/resolve-path.liquid path=__page.path %}">
+                                {{ __page.title }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+</div>

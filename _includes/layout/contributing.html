@@ -1,0 +1,23 @@
+<section class="bg-white py-4">
+    <div class="container">
+        <div class="d-flex flex-column mx-5">
+            <h2 class="h6 mb-0">{% include function/get-translation.liquid key="contributing.title" %}</h2>
+            <small class="text-secondary">{% include function/get-translation.liquid key="contributing.subtitle" %}</small>
+            <div class="mt-2">
+                <a
+                    class="btn btn-outline-primary px-4"
+                    href="https://github.com/KatsuteDev/docs/edit/main/{{ page.path }}"
+                    target="_blank"
+                >
+                    <i class="fas fa-code-branch"></i>
+                    {% include function/get-translation.liquid key="contributing.make-a-contribution" %}
+                </a>
+            </div>
+            <small class="mt-2">
+                <a class="text-decoration-none" href="/{{ lang }}/contributing">
+                    {% include function/get-translation.liquid key="contributing.guidelines" %}
+                </a>
+            </small>
+        </div>
+    </div>
+</section>

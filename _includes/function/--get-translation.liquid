@@ -1,0 +1,15 @@
+{% capture __lang %}{% include function/get-lang.liquid %}{% endcapture %}
+{% assign __steps = include.key | split: '.' %}
+{% comment %} find key {% endcomment %}
+{% assign __obj = site.data.translations[__lang] %}
+{% for __step in __steps %}
+    {% assign __obj = __obj[__step] %}
+{% endfor %}
+{% comment %} fallback to en {% endcomment %}
+{% unless __obj %}
+    {% assign __obj = site.data.translations["en"] %}
+    {% for __step in __steps %}
+        {% assign __obj = __obj[__step] %}
+    {% endfor %}
+{% endunless %}
+{{ __obj }}

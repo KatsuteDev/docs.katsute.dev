@@ -1,0 +1,19 @@
+<footer class="py-3">
+    <div class="container-xl d-flex justify-content-center">
+        <ul class="nav d-flex flex-wrap small">
+            <li class="nav-item text-secondary">
+                <span>&copy; {{ site.time | date: "%Y" }} Katsute</span>
+            </li>
+            {% comment %} navigation links {% endcomment %}
+            <li class="nav-item ps-3">
+                <a class="nav-link p-0" href="https://github.com/KatsuteDev">{% include function/get-translation.liquid key="footer.github" %}</a>
+            </li>
+            <li class="nav-item ps-3">
+                <a class="nav-link p-0" href="https://github.com/KatsuteDev/docs/issues">{% include function/get-translation.liquid key="footer.issues" %}</a>
+            </li>
+            <li class="nav-item ps-3">
+                <a class="nav-link p-0" href="/{{ lang }}/contributing">{% include function/get-translation.liquid key="footer.contributing" %}</a>
+            </li>
+        </ul>
+    </div>
+</footer>

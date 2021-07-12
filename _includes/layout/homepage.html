@@ -1,0 +1,23 @@
+<div class="container my-5">
+    <div class="d-flex flex-wrap mx-5">
+        {% for __page in site.pages %}
+            {% assign __arr = __page.url | split: '/' %}
+            {% if __arr[1] != lang %}
+                {% continue %}
+            {% endif %}
+            {% assign __folderIndex = __arr[3] %}
+            {% if __folderIndex == "README.md" or __folderIndex == "README.html" or __folderIndex == "index.html" %}
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="position-relative me-3 mb-3">
+                        <h3 class="h5 mb-0">
+                            <a class="text-decoration-none stretched-link" href="{% include function/resolve-path.liquid path=__page.path %}">{{ __page.title }}</a>
+                        </h3>
+                        <small class="text-secondary">
+                            {{ __page.description }}
+                        </small>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
