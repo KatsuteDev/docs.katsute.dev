@@ -1,0 +1,20 @@
+{% capture __newline %}
+{% endcapture %}
+{% assign __sorted = site.pages | sort: "title", "last" %}
+{% for __page in __sorted %}
+    {% assign __head = page.path | split: '/' %}
+    {% assign __len = __head | size %}
+    {% if
+        head[0] != "dependencies" &&
+        __len > 1
+        __page.name != "404.html" &&
+        head[2] != "javadoc"
+    %}
+        "{{ __page.url | slugify | remove: "-html" | remove: "-md" }}": {
+            "title": "{% include function/resolve-name.liquid path = __page.path %}",
+            "content": {{ __page.content | prepend: newline | prepend: page.description | markdownify | strip_newlines | strip_html | jsonify }},
+            "path": "{{ __page.url | xml_escape | remove: ".html" | remove: ".md" }}",
+            "crumb": "{% capture __crumb %}{% include breadcrumb.liquid path=__page.path %}{% endcapture %}{{ __crumb | strip_newlines | strip | replace: '"', "'" }}"
+        }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+{% endfor %}

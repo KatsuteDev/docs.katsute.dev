@@ -3,6 +3,7 @@ layout: compress
 ---
 <!DOCTYPE html>
 {% capture lang %}{% include function/get-lang.liquid %}{% endcapture %}
+{% assign lang = lang | downcase %}
 <html lang="{{ lang }}">
 
     <head>
@@ -16,9 +17,11 @@ layout: compress
         <main class="w-100 mh-100 overflow-auto">
             {% include layout/header.html %}
 
-            {% assign __this = page.path | split: '/' | slice: 1 | first | downcase %}
-            {% if __this == "index.html" or __this == "readme.md" %}
+            {% assign _this = page.path | split: '/' | slice: 1 | first | downcase %}
+            {% if _this == "index.html" or _this == "readme.md" %}
                 {% include layout/homepage.html %}
+            {% elsif _this == "404.html" %}
+                {{ content }}
             {% else %}
                 {% include layout/article.html %}
             {% endif %}

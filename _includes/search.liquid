@@ -1,4 +1,10 @@
+<form style="max-width: 500px" action="/{{lang}}">
+    <div class="input-group">
+        <input id="search-query" type="text" class="form-control" name="q" placeholder="{% include function/get-translation.liquid key="docs.search" %}">
+        <button class="btn btn-secondary" type="submit">
+            <i class="fas fa-fw fa-search"></i>
+        </button>
+    </div>
+</form>
 
-
-<script defer src="/dependencies/katsute/js/pages.js"></script>
 <script defer src="/dependencies/katsute/js/search.js"></script>

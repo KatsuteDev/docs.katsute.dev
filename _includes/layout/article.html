@@ -4,11 +4,7 @@
             {% comment %} header {% endcomment %}
             <div class="order-1 col-12">
                 <h1 class="my-4">
-                    {% if page.title %}
-                        {{ page.title }}
-                    {% else %}
-                        {% include function/get-file.liquid path=page.path %}
-                    {% endif %}
+                    {% include function/resolve-name.liquid path=page.path %}
                 </h1>
                 {% if page.description %}
                     <p class="mb-4 h5">

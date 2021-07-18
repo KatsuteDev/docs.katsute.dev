@@ -26,14 +26,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/KatsuteDev/docs.git"
+        "url": "git+https://github.com/KatsuteDev/docs.katsute.dev.git"
     },
     "author": "Katsute",
     "license": "CC-BY-1.0",
     "bugs": {
-        "url": "https://github.com/KatsuteDev/docs/issues"
+        "url": "https://github.com/KatsuteDev/docs.katsute.dev/issues"
     },
-    "homepage": "https://github.com/KatsuteDev/docs#readme",
+    "homepage": "https://github.com/KatsuteDev/docs.katsute.dev#readme",
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
         "bootstrap": "^5.0.2",

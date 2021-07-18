@@ -6,12 +6,21 @@
 {% if page.description %}
     <meta name="description" content="{{ page.description }}">
 {% endif %}
-{% if page.hidden %}
+{% if page.hidden or layout.hidden %}
     <meta name="robots" content="noindex, nofollow, none, noarchive, nosnippet" />
 {% endif %}
 
-<title>todo</title>
-
+<title>
+{% if page.title %}
+    {{ page.title }}
+{% elsif layout.title %}
+    {{ layout.title }}
+{% elsif page[404] or layout[404] %}
+    {% include function/get-translation.liquid key="docs.page_not_found" %}
+{% else %}
+    {% include function/resolve-name.liquid path=page.path %}
+{% endif %}
+</title>
 {% comment %} dependencies {% endcomment %}
 
 <link rel="icon" type="image/svg+xml" href="/dependencies/katsute/assets/favicon.ico">

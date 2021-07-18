@@ -1,0 +1,9 @@
+{% assign crumbs = include.path | remove: "index.html" | remove: "README.md" | remove: ".html" | remove: ".md" | split: '/' %}
+<nav>
+    <ol class="e+breadcrumb">
+        {% assign path = '' %}
+        {% for crumb in crumbs %}
+
+        {% endfor %}
+    </ol>
+</nav>

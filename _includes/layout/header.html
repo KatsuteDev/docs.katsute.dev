@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ms-lg-auto">
                 {% comment %} language {% endcomment %}
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown me-3">
                     <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown">
                         {% include function/get-translation.liquid key="name" %}
                     </a>
@@ -24,7 +24,6 @@
                                 <li>
                                     {% capture __path %}{% include function/resolve-path.liquid path=page.path %}{% endcapture %}
                                     {% assign __path = __path | remove_first: '/' | remove_first: lang | remove_first: '/' %}
-                                    {% capture __path %}{% include function/remove-extension.liquid path=__path %}{% endcapture %}
                                     <a class="dropdown-item" href="/{{ __lang[0] }}/{{ __path }}">
                                         {{ __lang[1].name }}
                                     </a>
@@ -36,23 +35,24 @@
                 <li class="d-block d-lg-none"><hr class="text-white dropdown-divider"></li>
                 {% comment %} mobile nav {% endcomment %}
                 {% assign __this = page.url | split: '/' | slice: 2 | first %}
-                {% for __page in site.pages %}
+                {% assign __sorted = site.pages | sort: "title", "last" %}
+                {% for __page in __sorted %}
                     {% assign __arr = __page.path | split: '/' %}
-                    {% if __arr[0] != lang %}
-                        {% continue %}
-                    {% endif %}
-                    {% assign __folderIndex = __arr[2] %}
-                    {% if __folderIndex == "README.md" or __folderIndex == "README.html" or __folderIndex == "index.html" %}
-                        {% assign __title = __page.title %}
-                        {% capture __folder %}{% include function/resolve-path.liquid path=__page.path %}{% endcapture %}
-                        {% capture __folderName %}{% include function/get-file.liquid path=__folder %}{% endcapture %}
-                        <li title="{{ __title }}" class="nav-item d-block d-lg-none">
-                            <a class="nav-link{% if __this == __folderName %} active{% endif %}" href="{{ __folder }}">
+                    {% if __arr[0] != lang %}{% continue %}{% endif %}
+                    {% assign __this_folderIndex = __arr[2] | downcase %}
+                    {% if __this_folderIndex == "readme.md" or __this_folderIndex == "index.html" %}
+                        <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link text-white text-decoration-none stretched-link" href="{% include function/resolve-path.liquid path=__page.path %}">
                                 {{ __page.title }}
                             </a>
                         </li>
                     {% endif %}
                 {% endfor %}
+                {% assign _this = page.path | split: '/' | slice: 1 | first | downcase %}
+                {% if _this != "index.html" and _this != "readme.md" and _this != "404.html" %}
+                    <li class="d-block d-lg-none"><hr class="text-white dropdown-divider"></li>
+                    {% include search.liquid %}
+                {% endif %}
             </ul>
         </div>
     </nav>

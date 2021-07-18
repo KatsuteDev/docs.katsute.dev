@@ -61,6 +61,16 @@ Example usage:
 {% include function/remove-extension.liquid path=page.path %}
 ```
 
+### resolve-name
+
+Returns the resolved file name or title.
+
+Example usage:
+
+```
+{% include function/resolve-name.liquid path=page.path %}
+```
+
 ### resolve-path
 
 Returns the path to a page or folder if it is a `README.md` or `index.html` file.

@@ -1,4 +1,9 @@
 <div class="container-lg my-5">
+    <div class="mx-1 mx-md-5">
+        {% include search.liquid %}
+    </div>
+</div>
+<div class="container-lg mb-5">
     <div class="d-flex flex-wrap mx-1 mx-md-5">
         {% for __page in site.pages %}
             {% assign __arr = __page.path | split: '/' %}

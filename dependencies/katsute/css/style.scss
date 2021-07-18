@@ -25,16 +25,23 @@ pre, code {
 
         /* Track */
         &-track {
+
             background: #202020;
+
         }
 
         /* Handle */
         &-thumb {
+
             background: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
+
             &:hover {
+
                 background: rgba(255, 255, 255, 0.35);
+
             }
+
         }
     }
 }
@@ -71,26 +78,53 @@ img {
     max-width: 100%;
 
     &.user-select-none {
+
         -webkit-user-drag: none;
         -khtml-user-drag : none;
         -moz-user-drag   : none;
         -o-user-drag     : none;
         user-select      : none ;
+
     }
+
 }
 
 nav li::before {
+
     content: none;
+
 }
 
 // ----- elements ---------------
 
 .c\+ {
-    &bg-dark {
-        background-color: #404040;
-    }
-    &bg-darker {
-        background-color: #202020;
+
+    &bg- {
+
+        &dark {
+
+            background-color: #404040;
+
+        }
+
+        &darken {
+
+            background-color: #303030;
+
+        }
+
+        &darker {
+
+            background-color: #202020;
+
+        }
+
+        &darkest {
+
+            background-color: #101010;
+
+        }
+
     }
 }
 
@@ -106,7 +140,7 @@ nav li::before {
         max-width: 275px;
         height: 100vh;
 
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
 
         nav {
@@ -117,11 +151,78 @@ nav li::before {
 
                 margin-top: 53px;
 
-                li {
+                details {
+
+                    @extend .ps-0;
+
+                    summary {
+
+                        @extend .user-select-none;
+                        @extend .list-unstyled;
+
+                        &::-webkit-details-marker {
+
+                            @extend .d-none;
+
+                        }
+
+                    }
+
+                    &[open] {
+
+                        @extend .c\+bg-darkest;
+
+                        i, svg {
+
+                            &.summary-closed {
+
+                                @extend .d-none;
+
+                            }
+
+                        }
+
+                    }
+
+                    &:not([open]) {
+                        i, svg {
+
+                            &.summary-open {
+
+                                @extend .d-none;
+
+                            }
+
+                        }
+                    }
+
+                    a::after { // remove stretched link
+
+                        @extend .d-none;
+
+                    }
+
+                    ul { // nested list
+
+                        @extend .mt-0;
+
+                        li { // doubley nested
+
+                            padding-left: 2rem !important;
+
+                        }
+
+                    }
+
+                }
+
+                // button styling
+                li, summary {
 
                     @extend .nav-item;
                     @extend .position-relative;
-                    @extend .ps-3, .py-2;
+                    @extend .py-2;
+                    @extend .ps-3;
 
                     a {
 
@@ -129,12 +230,24 @@ nav li::before {
                         @extend .text-decoration-none;
                         @extend .stretched-link;
 
-                        &:not(.text-secondary){
-
-                            @extend .text-white;
-
-                        }
                     }
+                }
+
+                // hover
+                li, summary {
+
+                    &:not(:hover) a {
+
+                        @extend .text-white;
+
+                    }
+
+                    &:hover a {
+
+                        @extend .text-secondary;
+
+                    }
+
                 }
 
             }
@@ -153,7 +266,7 @@ nav li::before {
 
                 @extend .nav-item;
 
-                &:first-of-type {
+                &:first-of-type { // (c)
 
                     @extend .text-secondary;
 

@@ -10,11 +10,15 @@ en:
   docs:
     title: Docs
     all_projects: All projects
+    search: Search
+    page_not_found: Page not found
+    page_not_found_reason: This page doesn't exist, or there is no translation available for this page.
   footer:
     github: GitHub
     issues: Issues
     contributing: Contributing
-jp:
+    license: License
+ja:
   name: 日本語
-cn:
+zh:
   name: 中国人
