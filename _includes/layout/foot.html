@@ -1,3 +1,9 @@
-<script defer src="/dependencies/node/bootstrap/js/bootstrap.min.js"></script>
+<script defer src="/dependencies/node/bootstrap/js/bootstrap.min.js">
+    let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+</script>
 
-<script defer src="/dependencies/katsute/js/autoscroll.js"></script>
+<script defer src="/dependencies/katsute/js/code.js"></script>
+<script defer src="/dependencies/katsute/js/scroll.js"></script>

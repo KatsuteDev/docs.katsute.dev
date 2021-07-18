@@ -10,11 +10,13 @@ layout: compress
         {% include layout/head.html %}
     </head>
 
-    <body class="d-lg-flex">
+    <body class="d-flex">
+
+        <noscript>{% include function/get-translation.liquid key="docs.no_js" %}</noscript>
 
         {% include layout/sidebar.html %}
 
-        <main class="w-100 mh-100 overflow-auto">
+        <main id="main" class="w-100 mh-100 overflow-auto">
             {% include layout/header.html %}
 
             {% assign _this = page.path | split: '/' | slice: 1 | first | downcase %}
@@ -28,6 +30,8 @@ layout: compress
 
             {% include layout/contributing.html %}
             {% include layout/footer.html %}
+
+            {% include layout/scroll.html %}
         </main>
 
         {% include layout/foot.html %}

@@ -20,7 +20,7 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
                     <div class="position-relative me-3 mb-3">
                         <h3 class="h5 mb-0">
-                            <a class="text-decoration-none stretched-link" href="{% include function/resolve-path.liquid path=__page.path %}">{{ __page.title }}</a>
+                            <a class="text-decoration-none stretched-link" href="{% include function/resolve-path.liquid path=__page.path %}">{% include function/resolve-name.liquid path=__page.path %}</a>
                         </h3>
                         <small class="text-secondary">
                             {{ __page.description }}

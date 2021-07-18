@@ -97,6 +97,110 @@ nav li::before {
 
 // ----- elements ---------------
 
+#scroll {
+    z-index: 20000;
+
+    @extend .position-fixed;
+
+    right: 1.5rem;
+    bottom: 1.5rem;
+
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .rounded-circle;
+
+    @extend .d-flex;
+    @extend .justify-content-center;
+    @extend .align-items-center;
+
+    width: 50px;
+    height: 50px;
+
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out !important;
+
+    &.shown {
+
+        opacity: 1;
+
+    }
+
+}
+
+.highlighter-rouge {
+
+    > div.highlight {
+
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+
+    }
+
+    .code-header {
+
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border-bottom: #404040 1px solid;
+
+        @extend .c\+bg-darker;
+        @extend .py-2;
+        @extend .px-3;
+
+        @extend .d-flex;
+        @extend .justify-content-between;
+        @extend .align-items-center;
+
+        // language name
+        p {
+
+            @extend .text-white;
+            @extend .mb-0;
+
+        }
+
+        // copy paste button
+        button {
+
+            @extend .btn;
+
+            &:not(.success){
+
+                @extend .btn-secondary;
+
+                i, svg {
+
+                    &.fa-check {
+
+                        @extend .d-none;
+
+                    }
+
+                }
+
+            }
+
+            &.success {
+
+                @extend .btn-success;
+
+                i, svg {
+
+                    &.fa-clipboard {
+
+                        @extend .d-none;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
 .c\+ {
 
     &bg- {
@@ -132,12 +236,12 @@ nav li::before {
     &sidebar {
 
         @extend .d-none;
-        @extend .d-lg-block;
+        @extend .d-md-block;
         @extend .pb-5;
 
-        width    : 275px;
-        min-width: 275px;
-        max-width: 275px;
+        width    : 250px;
+        min-width: 250px;
+        max-width: 250px;
         height: 100vh;
 
         overflow-y: auto;

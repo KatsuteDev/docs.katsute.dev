@@ -13,6 +13,7 @@ en:
     search: Search
     page_not_found: Page not found
     page_not_found_reason: This page doesn't exist, or there is no translation available for this page.
+    no_js: This site requires javascript.
   footer:
     github: GitHub
     issues: Issues

@@ -23,7 +23,7 @@
                     {% if __this_folderIndex == "readme.md" or __this_folderIndex == "index.html" %}
                         <li>
                             <a class="nav-link text-white text-decoration-none stretched-link" href="{% include function/resolve-path.liquid path=__page.path %}">
-                                {{ __page.title }}
+                                {% include function/resolve-name.liquid path=__page.path %}
                             </a>
                         </li>
                     {% endif %}
@@ -57,7 +57,7 @@
                     {% endif %}
                 {% endfor %}
 
-                <li>
+                <li class="border-bottom border-secondary">
                     <a href="/{{ lang }}/{{ __this_folder_dcase }}">
                         {{ __title }}
                     </a>
@@ -93,8 +93,8 @@
                                             <a href="{% include function/resolve-path.liquid path=__page.path %}">
                                                 {% include function/resolve-name.liquid path=__page.path %}
                                             </a>
-                                            <i class="summary-open text-white fas fa-angle-up fa-fw mx-2"></i>
-                                            <i class="summary-closed text-white fas fa-angle-down fa-fw mx-2"></i>
+                                            <i class="summary-open text-white fas fa-angle-up fa-fw fa-lg mx-2"></i>
+                                            <i class="summary-closed text-white fas fa-angle-down fa-fw fa-lg mx-2"></i>
                                         </div>
                                     </summary>
                                     {% comment %} subfolder files {% endcomment %}
