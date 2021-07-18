@@ -256,6 +256,118 @@ nav li::before {
 
     }
 
+    &breadcrumb {
+
+        @extend .list-inline;
+
+        .e\+breadcrumb-item {
+
+            @extend .list-inline-item;
+            @extend .me-0;
+
+            a, p {
+
+                @extend .text-decoration-none;
+                @extend .small;
+
+            }
+
+            p {
+
+                @extend .d-inline-block;
+                @extend .mb-0;
+
+            }
+
+            &.active {
+
+                a {
+
+                    @extend .text-secondary;
+
+                }
+
+            }
+
+            // separator
+
+            &:not(.active):after {
+
+                content: '/';
+
+                @extend .px-2;
+                @extend .small;
+
+            }
+
+        }
+
+    }
+
+    &results-container #search-results {
+
+        @extend .list-unstyled;
+        @extend .border-top;
+        @extend .mt-3;
+
+        > li {
+
+            @extend .position-relative;
+            @extend .p-3;
+            @extend .border-bottom;
+
+            &:hover {
+
+                background-color: rgba(0,123,255,0.1);
+
+            }
+
+            a {
+
+                @extend .stretched-link;
+                @extend .text-decoration-none;
+
+            }
+
+            h5 {
+
+                @extend .text-body;
+                @extend .my-2;
+
+            }
+
+            p {
+
+                @extend .mb-0;
+
+            }
+
+            // highlight
+
+            mark {
+
+                @extend .bg-transparent;
+                @extend .p-0;
+
+            }
+
+            h5 mark {
+
+                @extend .text-primary;
+
+            }
+
+            p mark {
+
+                @extend .fw-bold;
+                border-bottom: 1px dotted #202020;
+
+            }
+
+        }
+
+    }
+
     &footer {
 
         @extend .py-3;

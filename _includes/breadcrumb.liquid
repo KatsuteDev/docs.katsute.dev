@@ -1,9 +1,36 @@
-{% assign crumbs = include.path | remove: "index.html" | remove: "README.md" | remove: ".html" | remove: ".md" | split: '/' %}
+{% assign __crumbs = include.path | remove: "index.html" | remove: "README.md" | remove: ".html" | remove: ".md" | split: '/' %}
 <nav>
     <ol class="e+breadcrumb">
-        {% assign path = '' %}
-        {% for crumb in crumbs %}
+        {% assign __path = '' %}
+        {% for __crumb in __crumbs %}
+            <li class="e+breadcrumb-item {% if forloop.last %}active{% endif %}">
+                {% unless forloop.first %}
+                    {% assign __path = __path | append : '/' %}
+                {% endunless %}
+                {% assign __path = __path | append: __crumb %}
+                {% unless forloop.last %}
+                    {% comment %} resolve folder {% endcomment %}
+                    {% assign __targetMD = __path | append: "/README.md" %}
+                    {% assign __targetHTML = __path | append: "/index.html" %}
 
+                    {% capture __titleMD %}{% include function/resolve-name.liquid path=__targetMD %}{% endcapture %}
+                    {% capture __titleHTML %}{% include function/resolve-name.liquid path=__targetHTML %}{% endcapture %}
+
+                    {% if __titleMD != "" %}
+                        {% assign __title = __titleMD %}
+                    {% else %}
+                        {% assign __title = __titleHTML %}
+                    {% endif %}
+                {% else %}
+                    {% capture __title %}{% include function/resolve-name.liquid path=include.path %}{% endcapture %}
+                {% endunless %}
+                {% comment %} breadcrumb {% endcomment %}
+                {% unless include.raw %}
+                    <a href="/{{ __path | downcase }}">{{ __title | strip }}</a>
+                {% else %}
+                    <p>{{ __title | strip }}</p>
+                {% endunless %}
+            </li>
         {% endfor %}
     </ol>
 </nav>
