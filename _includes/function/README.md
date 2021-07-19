@@ -1,25 +1,5 @@
 # Functions
 
-### get-extension
-
-Returns the extension of a file or the file name if it has no extension.
-
-Example usage:
-
-```
-{% include function/get-extension.liquid path=page.path %}
-```
-
-### get-file
-
-Returns the file name from a path.
-
-Example usage:
-
-```
-{% include function/get-file.liquid path=page.path %}
-```
-
 ### get-lang
 
 Return the language of the current page.

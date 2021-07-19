@@ -4,7 +4,7 @@ layout: compress
 
 "use strict";
 
-{
+/* search */ {
     const lang = document.documentElement.lang.toLowerCase();
 
     const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());

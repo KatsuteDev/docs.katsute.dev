@@ -1,5 +1,3 @@
-{% capture __newline %}
-{% endcapture %}
 {% assign __sorted = site.pages | sort: "title", "last" %}
 {% for __page in __sorted %}
     {% assign __head = __page.path | split: '/' %}
@@ -12,7 +10,7 @@
     %}
         "{{ __page.url | slugify | remove: "-html" | remove: "-md" }}": {
             "title": "{% include function/resolve-name.liquid path = __page.path %}",
-            "content": {{ __page.content | prepend: newline | prepend: page.description | markdownify | strip_newlines | strip_html | jsonify }},
+            "content": {{ __page.content | prepend: ' ' | prepend: __page.description | markdownify | strip_newlines | strip_html | jsonify }},
             "path": "{{ __page.url | xml_escape | remove: ".html" | remove: ".md" }}",
             "crumb": "{% capture __crumb %}{% include breadcrumb.liquid path=__page.path raw=true %}{% endcapture %}{{ __crumb | strip_newlines | strip | replace: '"', "'" }}",
             "lang": "{{ __page.path | split: '/' | first | downcase }}"

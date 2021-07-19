@@ -1,5 +1,7 @@
+{% assign __breakpoint = "md" %}
+
 <div class="container-lg">
-    <div class="my-5 mx-1 mx-md-5">
+    <div class="my-5 mx-1 mx-{{ __breakpoint }}-5">
         {% include breadcrumb.liquid path=page.path %}
         <article class="e+article row m-0">
             {% comment %} header {% endcomment %}

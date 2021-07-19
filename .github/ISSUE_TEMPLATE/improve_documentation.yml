@@ -1,6 +1,6 @@
-name: Documentation Issue
-description: Report a documentation issue
-labels: [bug, documentation]
+name: Improve Documentation
+description: Make a suggestion to improve existing documentation
+labels: [feature request, documentation]
 assignees: []
 body:
   - type: checkboxes
@@ -12,23 +12,21 @@ body:
       options:
         - label: I have checked that no other similar issue already exists.
           required: true
-        - label: I have checked that this issue is actually a bug and not a feature.
-          required: true
 
   - type: input
-    id: location
+    id: link
     attributes:
-      label: Location
+      label: Link
       description: |
-        Provide a link to the page that has a documentation issue.
+        Which page should be improved? (please provide a link)
     validations:
       required: true
 
   - type: textarea
     id: issue
     attributes:
-      label: Issue
+      label: Suggestion
       description: |
-        Explain the issue.
+        Which parts of the page should be improved?
     validations:
       required: true

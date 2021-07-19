@@ -1,0 +1,16 @@
+<li class="nav-item dropdown me-3">
+    <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown">
+        {% include function/get-translation.liquid key="name" %}
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark c+bg-darker">
+        {% for __lang in site.data.translations %}
+            {% if __lang[0] != lang %}
+                <li>
+                    {% capture __path %}{% include function/resolve-path.liquid path=page.path %}{% endcapture %}
+                    {% assign __path = __path | remove_first: '/' | remove_first: lang | remove_first: '/' %}
+                    <a class="dropdown-item" href="/{{ __lang[0] }}/{{ __path }}">&nbsp;&nbsp;&nbsp;&nbsp;{{ __lang[1].name }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>

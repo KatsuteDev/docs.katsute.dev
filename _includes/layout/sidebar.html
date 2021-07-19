@@ -1,10 +1,10 @@
 {% assign __sorted = site.pages | sort: "title", "last" %}
-<div class="c+bg-darker e+sidebar">
+<div class="e+sidebar">
     {% comment %} header {% endcomment %}
-    <div class="p-3 position-sticky top-0 c+bg-darker" style="z-index: 9000">
-        <div class="d-flex align-items-center position-relative">
-            <img class="user-select-none" width="30" height="30" src="/dependencies/katsute/assets/favicon.ico">
-            <a class="h5 ms-1 mb-0 text-white text-decoration-none stretched-link user-select-none" href="/{{ lang }}">
+    <div class="e+sidebar-header">
+        <div class="c+brand">
+            <img src="/dependencies/katsute/assets/favicon.ico">
+            <a href="/{{ lang }}">
                 {% include function/get-translation.liquid key="docs.title" %}
             </a>
         </div>
@@ -14,117 +14,10 @@
         {% assign __len = page.path | split: '/' | size %}
         {% if __len <= 2 %}
             {% comment %} all repos {% endcomment %}
-            <ul>
-                {% for __page in __sorted %}
-                    {% assign __arr = __page.path | split: '/' %}
-                    {% if __arr[0] != lang %}{% continue %}{% endif %}
-                    {% assign __this_folderIndex = __arr[2] | downcase %}
-                    {% comment %} if found folder {% endcomment %}
-                    {% if __this_folderIndex == "readme.md" or __this_folderIndex == "index.html" %}
-                        <li>
-                            <a class="nav-link text-white text-decoration-none stretched-link" href="{% include function/resolve-path.liquid path=__page.path %}">
-                                {% include function/resolve-name.liquid path=__page.path %}
-                            </a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+            {% include layout/sidebar-all-repos.liquid %}
         {% else %}
             {% comment %} single repo {% endcomment %}
-            <ul class="mt-0">
-                {% comment %} all projects link {% endcomment %}
-                <li>
-                    <a class="small" href="/{{ lang }}">
-                        <i class="fas fa-arrow-left"></i>
-                        {% include function/get-translation.liquid key="docs.all_projects" %}
-                    </a>
-                </li>
-                {% comment %} this project {% endcomment %}
-                {% assign __this_folder = page.path | split: '/' | slice: 1 | first %}
-                {% assign __this_folder_dcase = __this_folder | downcase %}
-                {% assign __this_sub_folder = page.path | split: '/' | slice: 2 | first %}
-                {% assign __this_sub_folder_dcase = __this_folder | downcase %}
-                {% comment %} find this project's name {% endcomment %}
-                {% for __page in site.pages %}
-                    {% assign __dir = __page.path | split: '/' %}
-                    {% if __dir[0] == lang and __dir[1] == __this_folder %}
-                        {% assign __index = __dir[2] | downcase %}
-                        {% comment %} found index file in folder {% endcomment %}
-                        {% if __index == "index.html" or __index == "readme.md" %}
-                            {% capture __title %}{% include function/resolve-name.liquid path = __page.path %}{% endcapture %}
-                            {% break %}
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-
-                <li class="border-bottom border-secondary">
-                    <a href="/{{ lang }}/{{ __this_folder_dcase }}">
-                        {{ __title }}
-                    </a>
-                </li>
-                {% comment %} links {% endcomment %}
-                {% for __page in __sorted %}
-                    {% assign __dir = __page.path | split: '/' %}
-                    {% comment %} if found folder {% endcomment %}
-                    {% if __dir[0] == lang and __dir[1] == __this_folder %}
-                        {% comment %} if not index file and in top level {% endcomment %}
-                        {% assign __plen = __dir | size %}
-                        {% assign __dir2 = __dir[2] | downcase %}
-                        {% if __dir2 != "index.html" and __dir2 != "readme.md" and __plen == 3 %}
-                            <li>
-                                <a href="/{{ lang }}/{{ __this_folder_dcase }}/{% include function/remove-extension.liquid path=__page.name %}">
-                                    {% include function/resolve-name.liquid path=__page.path %}
-                                </a>
-                            </li>
-                        {% comment %} if subfolder index file {% endcomment %}
-                        {% elsif __plen == 4 %}
-                            {% assign __dir3 = __dir[3] | downcase %}
-                            {% if __dir3 == "index.html" or __dir3 == "readme.md" %}
-                                {% assign __sub_folder = __dir2 %}
-                                {% assign __sub_folder_dcase = __dir2 | downcase %}
-                                {% assign __open = "" %}
-                                {% if __dir[0] == lang and __dir[1] == __this_folder and __dir[2] == __this_sub_folder %}
-                                    {% assign __open = "open" %}
-                                {% endif %}
-                                <details {{ __open }}>
-                                    {% comment %} subfolder name {% endcomment %}
-                                    <summary>
-                                        <div class="d-block d-flex justify-content-between align-items-center">
-                                            <a href="{% include function/resolve-path.liquid path=__page.path %}">
-                                                {% include function/resolve-name.liquid path=__page.path %}
-                                            </a>
-                                            <i class="summary-open text-white fas fa-angle-up fa-fw fa-lg mx-2"></i>
-                                            <i class="summary-closed text-white fas fa-angle-down fa-fw fa-lg mx-2"></i>
-                                        </div>
-                                    </summary>
-                                    {% comment %} subfolder files {% endcomment %}
-                                    <ul>
-                                        {% for __sub_page in site.pages %}
-                                            {% assign __sub_dir = __sub_page.path | split: '/' %}
-                                            {% comment %} if inside subfolder {% endcomment %}
-                                            {% if
-                                                __sub_dir[0] == lang and
-                                                __sub_dir[1] == __this_folder_dcase and
-                                                __sub_dir[2] == __sub_folder_dcase
-                                            %}
-                                                {% comment %} and not index file {% endcomment %}
-                                                {% assign __sdir3 = __sub_dir[3] | downcase %}
-                                                {% if __sdir3 != "index.html" and __sdir3 != "readme.md" %}
-                                                    <li>
-                                                        <a href="/{{ lang }}/{{ __this_folder | downcase }}/{{ __sub_folder | downcase }}/{% include function/remove-extension.liquid path=__sub_page.name %}">
-                                                            {% include function/resolve-name.liquid path=__sub_page.path %}
-                                                        </a>
-                                                    </li>
-                                                {% endif %}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                </details>
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-            </ul>
+            {% include layout/sidebar-single-repo.liquid %}
         {% endif %}
     </nav>
 </div>

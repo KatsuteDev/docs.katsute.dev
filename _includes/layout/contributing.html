@@ -1,6 +1,7 @@
-<section class="bg-white py-4">
+{% assign __breakpoint = "md" %}
+<section class="e+contributing">
     <div class="container-lg">
-        <div class="d-flex flex-column mx-1 mx-md-5">
+        <div class="d-flex flex-column mx-1 mx-{{ __breakpoint }}-5">
             <h2 class="h6 mb-0">{% include function/get-translation.liquid key="contributing.title" %}</h2>
             <small class="text-secondary">{% include function/get-translation.liquid key="contributing.subtitle" %}</small>
             <div class="mt-2">

@@ -195,7 +195,7 @@ nav[role="navigation"] {
 
                         border          : solid 1px #CCCCCC !important;
                         border-radius   : 4px;
-                        background-image: url("glass.png") !important;
+                        background-image: url("/dependencies/katsute/assets/javadoc/glass.png") !important;
                         transition: all .15s ease-in-out, box-shadow .15s ease-in-out !important;
 
                         &:focus {
@@ -209,7 +209,7 @@ nav[role="navigation"] {
                     &#reset {
 
                         top: -5px !important;
-                        background-image: url("x.png") !important;
+                        background-image: url("/dependencies/katsute/assets/javadoc/x.png") !important;
                         background-color: transparent !important;
 
                     }

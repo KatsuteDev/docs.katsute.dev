@@ -1,24 +1,27 @@
 ---
 layout: compress
 ---
-<!DOCTYPE html>
+{% comment %} language {% endcomment %}
 {% capture lang %}{% include function/get-lang.liquid %}{% endcapture %}
 {% assign lang = lang | downcase %}
+
+<!DOCTYPE html>
 <html lang="{{ lang }}">
 
     <head>
         {% include layout/head.html %}
     </head>
 
-    <body class="d-flex">
+    <body>
 
         <noscript>{% include function/get-translation.liquid key="docs.no_js" %}</noscript>
 
         {% include layout/sidebar.html %}
 
-        <main id="main" class="w-100 mh-100 overflow-auto">
+        <main id="main">
             {% include layout/header.html %}
 
+            {% comment %} content {% endcomment %}
             {% assign _this = page.path | split: '/' | slice: 1 | first | downcase %}
             {% if _this == "index.html" or _this == "readme.md" %}
                 {% include layout/homepage.html %}
@@ -27,6 +30,8 @@ layout: compress
             {% else %}
                 {% include layout/article.html %}
             {% endif %}
+
+            {% comment %} bottom {% endcomment %}
 
             {% include layout/contributing.html %}
             {% include layout/footer.html %}

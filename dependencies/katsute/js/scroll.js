@@ -4,10 +4,12 @@ layout: compress
 
 "use strict";
 
-{
+/* auto scroll id */ {
     if(window.location.hash != "")
         document.getElementById(window.location.hash.substring(1)).scrollIntoView();
+}
 
+/* top scroller */ {
     const top = document.getElementById("scroll");
     const main = document.getElementById("main");
 

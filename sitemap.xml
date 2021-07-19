@@ -1,21 +1,21 @@
 ---
 layout: compress
 ---
-{% assign mod = site.time | date: "%Y-%m-%d" %}
+{% assign __mod = site.time | date: "%Y-%m-%d" %}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-    {% for page in site.pages %}
-        {% assign head = page.path | split: '/' %}
+    {% for __page in site.pages %}
+        {% assign __head = __page.path | split: '/' %}
+        {% assign __len = __head | size %}
         {% if
-            head[0] != "dependencies" and
-            head[0] != "404.html" and
-            head[2] != "404.html" and
-            head[1] != "documentation" and
-            head[0] != "sitemap.xml"
+            __len > 1 and
+            __page.name != "404.html" and
+            __head[0] != "dependencies" and
+            __head[2] != "javadoc"
         %}
             <url>
-                <loc>{{ site.url }}{{ page.path | remove: "index.html" | remove: "README.md" | remove: ".md" | remove: ".html" }}</loc>
-                <lastmod>{{ mod }}</lastmod>
+                <loc>{{ site.url }}/{{ __page.path | remove: "index.html" | remove: "README.md" | remove: ".md" | remove: ".html" }}</loc>
+                <lastmod>{{ __mod }}</lastmod>
                 <changefreq>weekly</changefreq>
                 <priority>0.5</priority>
             </url>
