@@ -26,14 +26,6 @@ If there is a problem with one of the documentation pages, or if it needs updati
 
 Pulls should be accompanied by an existing [issue](https://github.com/KatsuteDev/docs.katsute.dev/issues).
 
-## Translations
-
-Translations are needed for [translations.yml](https://github.com/KatsuteDev/docs.katsute.dev/blob/main/_data/translations.yml) and documentation.
-
-For the [`translations.yml`](https://github.com/KatsuteDev/docs.katsute.dev/blob/main/_data/translations.yml) file use the same keys as the English translation.
-
-For page translation simply copy the file from the English `/en` folder to a different language folder at the same path. Ex: `/en/contributing.md` → `/ja/contributing.md`.
-
 ```javascript
 
 test;

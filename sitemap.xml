@@ -6,12 +6,9 @@ layout: compress
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
     {% for __page in site.pages %}
         {% assign __head = __page.path | split: '/' %}
-        {% assign __len = __head | size %}
         {% if
-            __len > 1 and
-            __page.name != "404.html" and
-            __head[0] != "dependencies" and
-            __head[2] != "javadoc"
+            __head[0] != "404.html" and
+            __head[0] != "dependencies"
         %}
             <url>
                 <loc>{{ site.url }}/{{ __page.path | remove: "index.html" | remove: "README.md" | remove: ".md" | remove: ".html" }}</loc>

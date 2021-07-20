@@ -1,14 +1,12 @@
 {% assign __sorted = site.pages | sort: "title", "last" %}
+{% comment %} file generated links {% endcomment %}
 {% for __page in __sorted %}
     {% assign __dir = __page.path | split: '/' %}
 
-    {% comment %} only include matching locale {% endcomment %}
-    {% if __dir[0] != lang %}{% continue %}{% endif %}
-
     {% comment %} if found folder {% endcomment %}
-    {% assign __dir2 = __dir[2] | downcase %}
-    {% if __dir2 == "readme.md" or __dir2 == "index.html" %}
-        <li class="d-{{ include.breakpoint }}-none">
+    {% assign __dir1 = __dir[1] | downcase %}
+    {% if __dir1 == "readme.md" or __dir1 == "index.html" %}
+        <li class="d-{{ site.breakpoint }}-none">
             <a href="{% include function/resolve-path.liquid path=__page.path %}">
                 {% include function/resolve-name.liquid path=__page.path %}
             </a>
@@ -16,9 +14,31 @@
     {% endif %}
 {% endfor %}
 
+{% comment %} manual links {% endcomment %}
+{% for __link in site.data.links['/'] %}
+    {% assign __external == __link | last | slice: 0 %}
+    {% unless __external == '/' %}
+        {% assign __external = true %}
+    {% else %}
+        {% assign __external = false %}
+    {% endunless %}
+    <li class="d-{{ site.breakpoint }}-none">
+        <a href="{{ __link | last }}" {% if __external %}target="_blank"{% endif %}>
+            {{ __link | first }}
+            {% if __external %}
+                <i class="fas fa-external-link-alt fa-fw"></i>
+            {% endif %}
+        </a>
+    </li>
+{% endfor %}
+
 {% comment %} search bar {% endcomment %}
-{% assign __dir1 = page.path | split: '/' | slice: 1 | first | downcase %}
-{% if __dir1 != "index.html" and __dir1 != "readme.md" and __dir1 != "404.html" %}
+{% assign __dir0 = page.path | split: '/' | slice: 0 | first | downcase %}
+{% if
+    __dir0 != "index.html" and
+    __dir0 != "readme.md" and
+    __dir0 != "404.html"
+%}
     <li class="li-divider d-{{ site.breakpoint }}-none"></li>
     {% include search.liquid %}
 {% endif %}

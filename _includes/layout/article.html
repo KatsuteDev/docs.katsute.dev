@@ -3,7 +3,7 @@
 <div class="container-lg">
     <div class="my-5 mx-1 mx-{{ site.breakpoint }}-5">
         {% include breadcrumb.liquid path=page.path %}
-        <article class="e+article row m-0">
+        <article class="row m-0">
             {% comment %} header {% endcomment %}
             <div class="order-1 col-12">
                 <h1 class="my-4">
@@ -19,7 +19,7 @@
             <div class="markdown-toc order-2 order-{{ __toc_breakpoint }}-last col-12 col-{{ __toc_breakpoint }}-3">
                 <div class="ms-{{ __toc_breakpoint }}-3">
                     <h2 id="table-of-contents" class="h6 fw-bold mb-0">
-                        <a class="text-body" href="#table-of-contents">In this article</a>
+                        <a class="text-body" href="#table-of-contents">{{ site.data.text.article.in_this_article }}</a>
                     </h2>
                     <hr class="my-0">
                     {% include import/toc.html html=content %}

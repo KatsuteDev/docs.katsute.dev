@@ -1,1 +1,1 @@
-{% capture result %}{% include function/--resolve-path.liquid path=include.path %}{% endcapture %}{{ result | strip_newlines | strip }}
+{% capture result %}{% include function/--resolve-path.liquid path=include.path noext=include.noext %}{% endcapture %}{{ result | strip_newlines | strip }}

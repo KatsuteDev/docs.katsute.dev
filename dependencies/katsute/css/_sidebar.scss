@@ -144,18 +144,7 @@
 
             }
 
-            li, summary {
-
-                i, svg {
-
-                    @extend .text-white;
-
-                }
-
-            }
-
-            // button styling
-            li, summary {
+            li, summary { // link button
 
                 @extend .nav-item;
 
@@ -174,10 +163,15 @@
 
                 }
 
-            }
+                // icon
 
-            // hover
-            li, summary {
+                i, svg {
+
+                    @extend .text-white;
+
+                }
+
+                // hover
 
                 &:not(:hover) a {
 

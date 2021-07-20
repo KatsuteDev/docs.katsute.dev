@@ -2,7 +2,7 @@
     <div class="container-xl d-flex justify-content-center">
         <ul class="nav">
             <li>
-                <span>&copy; {{ site.time | date: "%Y" }} Katsute</span>
+                <span>&copy; {{ site.time | date: "%Y" }} {{ site.data.text.katsute }}</span>
             </li>
             {% comment %} navigation links {% endcomment %}
             {% for __link in site.data.footer %}

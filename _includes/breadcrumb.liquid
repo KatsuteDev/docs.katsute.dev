@@ -29,8 +29,11 @@
                     {% capture __title %}{% include function/resolve-name.liquid path=include.path %}{% endcapture %}
                 {% endunless %}
                 {% comment %} actual breadcrumb {% endcomment %}
+                {% assign __ldot = __path | split: '.' | size | minus: 1 %}
+                {% assign __name = __path | split: '.' | slice: 0, __ldot | join: '.' %}
+
                 {% unless include.raw %}
-                    <a href="/{{ __path | downcase }}">{{ __title | strip }}</a>
+                    <a href="/{{ __name }}">{{ __title | strip }}</a>
                 {% else %}
                     <p>{{ __title | strip }}</p>
                 {% endunless %}

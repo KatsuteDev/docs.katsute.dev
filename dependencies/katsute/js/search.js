@@ -5,8 +5,6 @@ layout: compress
 "use strict";
 
 /* search */ {
-    const lang = document.documentElement.lang.toLowerCase();
-
     const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
 
     const search_results = document.getElementById("search-results");
@@ -23,13 +21,12 @@ layout: compress
             this.field("title", {boost: 10});
             this.field("content");
             for(let key in pages)
-                if(pages[key].lang == lang)
-                    this.add({
-                        "id": key,
-                        "path": pages[key].path,
-                        "title": pages[key].title,
-                        "content": pages[key].content
-                    });
+                this.add({
+                    "id": key,
+                    "path": pages[key].path,
+                    "title": pages[key].title,
+                    "content": pages[key].content
+                });
         });
 
         const results = index.search(q);
@@ -57,5 +54,7 @@ layout: compress
         }
 
         search_results.innerHTML = resultsString;
+
     }
+
 }

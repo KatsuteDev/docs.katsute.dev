@@ -1,0 +1,76 @@
+.search-results-container > ul#search-results {
+
+    @extend .list-unstyled;
+    @extend .border-top;
+    @extend .mt-3;
+
+    > li {
+
+        @extend .position-relative;
+        @extend .p-3;
+        @extend .border-bottom;
+
+        &:hover {
+
+            background-color: rgba(0,123,255,0.1);
+
+        }
+
+        a {
+
+            @extend .stretched-link;
+            @extend .text-decoration-none;
+
+        }
+
+        h5 {
+
+            @extend .text-body;
+            @extend .my-2;
+
+        }
+
+        p {
+
+            @extend .mb-0;
+
+        }
+
+        // highlight
+
+        mark {
+
+            @extend .bg-transparent;
+            @extend .p-0;
+
+        }
+
+        h5 mark {
+
+            @extend .text-primary;
+
+        }
+
+        p mark {
+
+            @extend .fw-bold;
+
+            border-bottom: 1px dotted #202020;
+
+            @extend .mx-1; // fix spacing around mark
+
+        }
+
+    }
+
+    .nbs-breadcrumb { // tweak beadcrumb indentation
+
+        li:first-of-type::before {
+
+            @extend .ps-1;
+
+        }
+
+    }
+
+}

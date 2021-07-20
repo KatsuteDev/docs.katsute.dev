@@ -1,3 +1,0 @@
-{% assign __name = include.path | split: '/' | last %}
-{% assign __dotno = __name | split: '.' | size | minus: 1 %}
-{{ __name | split: '.' | slice: 0, __dotno | join: '.' }}
