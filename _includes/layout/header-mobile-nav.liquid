@@ -19,6 +19,6 @@
 {% comment %} search bar {% endcomment %}
 {% assign __dir1 = page.path | split: '/' | slice: 1 | first | downcase %}
 {% if __dir1 != "index.html" and __dir1 != "readme.md" and __dir1 != "404.html" %}
-    <li class="e+divider d-{{ include.breakpoint }}-none"></li>
+    <li class="li-divider d-{{ site.breakpoint }}-none"></li>
     {% include search.liquid %}
 {% endif %}

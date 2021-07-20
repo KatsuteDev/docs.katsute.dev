@@ -1,0 +1,200 @@
+.sidebar {
+
+    @extend .d-none;
+    @extend .d-md-block;
+    @extend .pb-5;
+
+    $width: 250px;
+
+    width    : $width;
+    min-width: $width;
+    max-width: $width;
+    height   : 100vh;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: $darker;
+
+    .sidebar-header { // header / logo
+
+        @extend .position-sticky;
+        @extend .top-0;
+
+        background-color: $darker;
+        z-index: 9000;
+
+        > div { // header container
+
+            @extend .position-relative; // stretched link
+
+            @extend .d-flex;
+            @extend .align-items-center;
+
+            @extend .p-3;
+
+            > a { // 'docs' name
+
+                @extend .user-select-none;
+
+                @extend .stretched-link;
+
+                @extend .text-decoration-none;
+                @extend .text-white;
+                @extend .h5;
+
+                @extend .ms-1;
+                @extend .my-0;
+
+
+            }
+
+        }
+
+    }
+
+    nav {
+
+        ul {
+
+            @extend .navbar-nav;
+
+            margin-top: 53px; // all projects spacer
+
+            details { // nested directory
+
+                @extend .ps-0;
+
+                > summary {
+
+                    @extend .user-select-none;
+                    @extend .list-unstyled;
+
+                    &::-webkit-details-marker {
+
+                        @extend .d-none;
+
+                    }
+
+                    > div { // subfolder button
+
+                        @extend .d-flex;
+                        @extend .align-items-center;
+                        @extend .justify-content-between;
+
+                        > i, > svg {
+
+                            @extend .mx-2;
+
+                        }
+
+                        a::after { // remove stretched link
+
+                            @extend .d-none;
+
+                        }
+
+                    }
+
+                }
+
+                // submenu open
+                &[open] {
+
+                    background-color: $darkest;
+
+                    i, svg {
+
+                        &.summary-closed {
+
+                            @extend .d-none;
+
+                        }
+
+                    }
+
+                }
+
+                // submenu closed
+                &:not([open]) {
+
+                    i, svg {
+
+                        &.summary-open {
+
+                            @extend .d-none;
+
+                        }
+
+                    }
+
+                }
+
+                ul { // nested list
+
+                    @extend .mt-0;
+
+                    li { // nested files
+
+                        padding-left: 2rem !important;
+
+                    }
+
+                }
+
+            }
+
+            li, summary {
+
+                i, svg {
+
+                    @extend .text-white;
+
+                }
+
+            }
+
+            // button styling
+            li, summary {
+
+                @extend .nav-item;
+
+                @extend .position-relative;
+
+                @extend .py-2;
+                @extend .ps-3;
+
+                a {
+
+                    @extend .nav-link;
+
+                    @extend .text-decoration-none;
+
+                    @extend .stretched-link;
+
+                }
+
+            }
+
+            // hover
+            li, summary {
+
+                &:not(:hover) a {
+
+                    @extend .text-white;
+
+                }
+
+                &:hover a {
+
+                    @extend .text-secondary;
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

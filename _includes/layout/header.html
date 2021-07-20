@@ -1,29 +1,19 @@
-{% assign __breakpoint = "md" %}
-
-<div class="e+header">
+<div class="header">
     {% comment %} logo on small viewports {% endcomment %}
-    <div class="e+header-brand d-{{ __breakpoint }}-none">
-        <div class="c+brand">
-            <img src="/dependencies/katsute/assets/favicon.ico">
-            <a href="/{{ lang }}">
-                {% include function/get-translation.liquid key="docs.title" %}
-            </a>
-        </div>
+    <div class="header-brand d-{{ site.breakpoint }}-none">
+        {% include layout/brand.liquid %}
     </div>
     {% comment %} top navigation {% endcomment %}
-    <nav class="navbar navbar-expand-{{ __breakpoint }}">
+    <nav class="navbar navbar-expand-{{ site.breakpoint }}">
         {% comment %} toggler {% endcomment %}
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobile-navigation">
             <i class="fas fa-bars fa-fw"></i>
         </button>
         {% comment %} navigation {% endcomment %}
-        <div id="navigation" class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-{{ __breakpoint }}-auto">
-                {% comment %} language {% endcomment %}
-                {% include layout/header-language.liquid %}
-                <li class="e+divider d-{{ breakpoint }}-none"><hr></li>
+        <div id="mobile-navigation" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-{{ site.breakpoint }}-auto">
                 {% comment %} mobile nav {% endcomment %}
-                {% include layout/header-mobile-nav.liquid breakpoint=__breakpoint %}
+                {% include layout/header-mobile-nav.liquid %}
             </ul>
         </div>
     </nav>

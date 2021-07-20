@@ -2,22 +2,22 @@
 <ul class="mt-0">
     {% comment %} all projects link {% endcomment %}
     <li>
-        <a class="small" href="/{{ lang }}">
-            <i class="fas fa-arrow-left"></i>
-            {% include function/get-translation.liquid key="docs.all_projects" %}
+        <a class="small" href="/">
+            <i class="fas fa-arrow-left fa-fw"></i>
+            All projects
         </a>
     </li>
     {% comment %} this project {% endcomment %}
-    {% assign __this_folder = page.path | split: '/' | slice: 1 | first %}
+    {% assign __this_folder = page.path | split: '/' | slice: 0 | first %}
     {% assign __this_folder_dcase = __this_folder | downcase %}
-    {% assign __this_sub_folder = page.path | split: '/' | slice: 2 | first %}
+    {% assign __this_sub_folder = page.path | split: '/' | slice: 1 | first %}
     {% assign __this_sub_folder_dcase = __this_folder | downcase %}
     {% comment %} find this project's name {% endcomment %}
     {% for __page in site.pages %}
         {% assign __dir = __page.path | split: '/' %}
-        {% comment %} if matching locale and inside this folder {% endcomment %}
-        {% if __dir[0] == lang and __dir[1] == __this_folder %}
-            {% assign __index = __dir[2] | downcase %}
+        {% comment %} if inside this folder {% endcomment %}
+        {% if __dir[0] == __this_folder %}
+            {% assign __index = __dir[1] | downcase %}
             {% comment %} found index file in folder {% endcomment %}
             {% if __index == "index.html" or __index == "readme.md" %}
                 {% capture __title %}{% include function/resolve-name.liquid path = __page.path %}{% endcapture %}
@@ -27,7 +27,7 @@
     {% endfor %}
     {% comment %} this repo nav item {% endcomment %}
     <li class="border-bottom border-secondary">
-        <a href="/{{ lang }}/{{ __this_folder_dcase }}">
+        <a href="/{{ __this_folder_dcase }}">
             {{ __title }}
         </a>
     </li>
@@ -35,19 +35,19 @@
     {% for __page in __sorted %}
         {% assign __dir = __page.path | split: '/' %}
         {% assign __dirs = __dir | size %}
-        {% comment %} if matching locale and inside this folder {% endcomment %}
-        {% if __dir[0] == lang and __dir[1] == __this_folder %}
+        {% comment %} if inside this folder {% endcomment %}
+        {% if __dir[0] == __this_folder %}
             {% comment %} if file in immediate directory {% endcomment %}
-            {% assign __dir2 = __dir[2] | downcase %}
-            {% if __dir2 != "index.html" and __dir2 != "readme.md" and __dirs == 3 %}
+            {% assign __dir2 = __dir[1] | downcase %}
+            {% if __dir2 != "index.html" and __dir2 != "readme.md" and __dirs == 2 %}
                 <li>
-                    <a href="/{{ lang }}/{{ __this_folder_dcase }}/{% include function/remove-extension.liquid path=__page.name %}">
+                    <a href="/{{ __this_folder_dcase }}/{% include function/remove-extension.liquid path=__page.name %}">
                         {% include function/resolve-name.liquid path=__page.path %}
                     </a>
                 </li>
             {% comment %} if subfolder {% endcomment %}
-            {% elsif __dirs == 4 %}
-                {% assign __dir3 = __dir[3] | downcase %}
+            {% elsif __dirs == 3 %}
+                {% assign __dir3 = __dir[2] | downcase %}
                 {% comment %} if folder index file {% endcomment %}
                 {% if __dir3 == "index.html" or __dir3 == "readme.md" %}
                     {% assign __sub_folder = __dir2 %}
@@ -55,7 +55,7 @@
                     {% if __sub_folder_dcase != "javadoc" %}
                         {% comment %} if this subfolder {% endcomment %}
                         {% assign __open = "" %}
-                        {% if __dir[0] == lang and __dir[1] == __this_folder and __dir[2] == __this_sub_folder %}
+                        {% if __dir[0] == __this_folder and __dir[1] == __this_sub_folder %}
                             {% assign __open = "open" %}
                         {% endif %}
                         {% comment %} subfolder nav item {% endcomment %}
@@ -77,15 +77,14 @@
                                     {% assign __sub_dir = __sub_page.path | split: '/' %}
                                     {% comment %} if inside subfolder {% endcomment %}
                                     {% if
-                                        __sub_dir[0] == lang and
-                                        __sub_dir[1] == __this_folder_dcase and
-                                        __sub_dir[2] == __sub_folder_dcase
+                                        __sub_dir[0] == __this_folder_dcase and
+                                        __sub_dir[1] == __sub_folder_dcase
                                     %}
                                         {% comment %} and not index file {% endcomment %}
-                                        {% assign __sdir3 = __sub_dir[3] | downcase %}
+                                        {% assign __sdir3 = __sub_dir[2] | downcase %}
                                         {% if __sdir3 != "index.html" and __sdir3 != "readme.md" %}
                                             <li>
-                                                <a href="/{{ lang }}/{{ __this_folder_dcase }}/{{ __sub_folder_dcase }}/{% include function/remove-extension.liquid path=__sub_page.name %}">
+                                                <a href="/{{ __this_folder_dcase }}/{{ __sub_folder_dcase }}/{% include function/remove-extension.liquid path=__sub_page.name %}">
                                                     {% include function/resolve-name.liquid path=__sub_page.path %}
                                                 </a>
                                             </li>
@@ -96,7 +95,7 @@
                         </details>
                     {% else %} {% comment %} javadoc exception {% endcomment %}
                         <li>
-                            <a href="/{{ lang }}/{{ __this_folder | downcase }}/javadoc">Javadoc</a>
+                            <a href="/{{ __this_folder | downcase }}/javadoc">Javadoc</a>
                         </li>
                     {% endif %}
                 {% endif %}

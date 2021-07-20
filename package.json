@@ -7,7 +7,7 @@
         "// -- dev -- //": "",
         "clean": "rimraf dependencies/node & rimraf _site & rimraf .jekyll-cache & rimraf dist & rimraf build*",
         "prune": "npm prune && npm i --package-lock --ignore-scripts",
-        "update": "npm update && npm i --package-lock --ignore-scripts && npm run prune",
+        "update": "npm update -D && npm i --package-lock --ignore-scripts && npm run prune",
         "// -- build -- //": "",
         "build:deps:bootstrap:js": "copyfiles \"node_modules/bootstrap/dist/js/bootstrap.min.js?(.map)\" dependencies/node/bootstrap/js -f",
         "build:deps:bootstrap:scss": "copyfiles \"node_modules/bootstrap/scss/**/*\" dependencies/node/bootstrap/scss -u 3",

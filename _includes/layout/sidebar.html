@@ -1,18 +1,12 @@
-{% assign __sorted = site.pages | sort: "title", "last" %}
-<div class="e+sidebar">
+<div class="sidebar">
     {% comment %} header {% endcomment %}
-    <div class="e+sidebar-header">
-        <div class="c+brand">
-            <img src="/dependencies/katsute/assets/favicon.ico">
-            <a href="/{{ lang }}">
-                {% include function/get-translation.liquid key="docs.title" %}
-            </a>
-        </div>
+    <div class="sidebar-header">
+        {% include layout/brand.liquid %}
     </div>
     {% comment %} navigation {% endcomment %}
     <nav>
         {% assign __len = page.path | split: '/' | size %}
-        {% if __len <= 2 %}
+        {% if __len <= 1 %}
             {% comment %} all repos {% endcomment %}
             {% include layout/sidebar-all-repos.liquid %}
         {% else %}

@@ -1,12 +1,8 @@
 ---
 layout: compress
 ---
-{% comment %} language {% endcomment %}
-{% capture lang %}{% include function/get-lang.liquid %}{% endcapture %}
-{% assign lang = lang | downcase %}
-
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="en">
 
     <head>
         {% include layout/head.html %}
@@ -14,7 +10,7 @@ layout: compress
 
     <body>
 
-        <noscript>{% include function/get-translation.liquid key="docs.no_js" %}</noscript>
+        <noscript>This site requires javascript.</noscript>
 
         {% include layout/sidebar.html %}
 
@@ -22,10 +18,10 @@ layout: compress
             {% include layout/header.html %}
 
             {% comment %} content {% endcomment %}
-            {% assign _this = page.path | split: '/' | slice: 1 | first | downcase %}
-            {% if _this == "index.html" or _this == "readme.md" %}
+            {% assign __this = page.path | split: '/' | slice: 0 | first | downcase %}
+            {% if __this == "index.html" or __this == "readme.md" %}
                 {% include layout/homepage.html %}
-            {% elsif _this == "404.html" %}
+            {% elsif __this == "404.html" %}
                 {{ content }}
             {% else %}
                 {% include layout/article.html %}
@@ -36,7 +32,7 @@ layout: compress
             {% include layout/contributing.html %}
             {% include layout/footer.html %}
 
-            {% include layout/scroll.html %}
+            {% include layout/top-scroll-button.html %}
         </main>
 
         {% include layout/foot.html %}

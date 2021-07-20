@@ -1,0 +1,50 @@
+.nbs-breadcrumb { // prevent conflict with boostrap .breadrumb
+
+    @extend .list-inline;
+
+    li {
+
+        @extend .list-inline-item;
+
+        @extend .me-0;
+
+        a, p {
+
+            @extend .text-decoration-none;
+
+            @extend .small;
+
+        }
+
+        p {
+
+            @extend .d-inline-block;
+
+            @extend .mb-0;
+
+        }
+
+        // current
+
+        &.active a {
+
+            @extend .text-secondary;
+
+        }
+
+        // separator
+
+        &:before {
+
+            content: '/';
+
+            @extend .ps-2;
+            @extend .pe-1;
+
+            @extend .small;
+
+        }
+
+    }
+
+}

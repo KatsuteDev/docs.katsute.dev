@@ -1,15 +1,18 @@
-{% assign __crumbs = include.path | remove: "index.html" | remove: "README.md" | remove: ".html" | remove: ".md" | split: '/' %}
+{% assign __crumbs = include.path | split: '/' %}
+
 <nav>
-    <ol class="e+breadcrumb">
+    <ol class="nbs-breadcrumb">
         {% assign __path = '' %}
         {% for __crumb in __crumbs %}
-            <li class="e+breadcrumb-item {% if forloop.last %}active{% endif %}">
+            <li {% if forloop.last %}class="active"{% endif %}>
                 {% unless forloop.first %}
                     {% assign __path = __path | append : '/' %}
                 {% endunless %}
                 {% assign __path = __path | append: __crumb %}
+
+                {% comment %} locate folder README {% endcomment %}
                 {% unless forloop.last %}
-                    {% comment %} resolve folder {% endcomment %}
+                    {% comment %} test for README or index {% endcomment %}
                     {% assign __targetMD = __path | append: "/README.md" %}
                     {% assign __targetHTML = __path | append: "/index.html" %}
 
@@ -22,9 +25,10 @@
                         {% assign __title = __titleHTML %}
                     {% endif %}
                 {% else %}
+                    {% comment %} get current preferred name {% endcomment %}
                     {% capture __title %}{% include function/resolve-name.liquid path=include.path %}{% endcapture %}
                 {% endunless %}
-                {% comment %} breadcrumb {% endcomment %}
+                {% comment %} actual breadcrumb {% endcomment %}
                 {% unless include.raw %}
                     <a href="/{{ __path | downcase }}">{{ __title | strip }}</a>
                 {% else %}

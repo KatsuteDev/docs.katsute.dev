@@ -12,7 +12,7 @@
                 {% assign __fin = __page.path | split: '/' | size | minus: 2 %}
                 {% assign __name = __page.path | split: '/' | slice: __fin | first %}
             {% else %}
-                {% comment %} extension {% endcomment %}
+                {% comment %} file name w/o ext. {% endcomment %}
                 {% assign __ldot = __name | split: '.' | size | minus: 1 %}
                 {% assign __name = __name | split: '.' | slice: 0, __ldot | join: '.' %}
             {% endif %}

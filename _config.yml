@@ -1,3 +1,7 @@
+# Site Vars
+
+breakpoint: md
+
 # Development
 
 livereload: true

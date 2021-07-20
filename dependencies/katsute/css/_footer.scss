@@ -1,0 +1,39 @@
+footer {
+
+    @extend .py-3;
+
+    ul {
+
+        @extend .d-flex;
+        @extend .flex-wrap;
+
+        li {
+
+            @extend .nav-item;
+
+            @extend .small;
+
+            &:first-of-type { // (c)
+
+                @extend .text-secondary;
+
+            }
+
+            &:not(:first-of-type) {
+
+                @extend .ps-3;
+
+            }
+
+            a {
+
+                @extend .nav-link;
+                @extend .p-0;
+
+            }
+
+        }
+
+    }
+
+}

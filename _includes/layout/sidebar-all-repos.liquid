@@ -2,12 +2,10 @@
 <ul>
     {% for __page in __sorted %}
         {% assign __dir = __page.path | split: '/' %}
-        {% comment %} only include matching locale {% endcomment %}
-        {% if __dir[0] != lang %}{% continue %}{% endif %}
 
         {% comment %} if found folder {% endcomment %}
-        {% assign __dir2 = __dir[2] | downcase %}
-        {% if __dir2 == "readme.md" or __dir2 == "index.html" %}
+        {% assign __dir1 = __dir[1] | downcase %}
+        {% if __dir1 == "readme.md" or __dir1 == "index.html" %}
             <li>
                 <a href="{% include function/resolve-path.liquid path=__page.path %}">
                     {% include function/resolve-name.liquid path=__page.path %}

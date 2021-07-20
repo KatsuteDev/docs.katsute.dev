@@ -12,13 +12,12 @@
 
 {% comment %} title {% endcomment %}
 
-{% assign __title = "docs.page_not_found" %}
 {% if page.title %}
     {% assign __title = page.title %}
 {% elsif layout.title %}
     {% assign __title = layout.title %}
 {% elsif page[404] or layout[404] %}
-    {% capture __title %}{% include function/get-translation.liquid key="docs.page_not_found" %}{% endcapture %}
+    {% capture __title %}Page not found{% endcapture %}
 {% else %}
     {% capture __title %}{% include function/resolve-name.liquid path=page.path %}{% endcapture %}
 {% endif %}
