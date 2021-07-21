@@ -4,5 +4,5 @@
 
 This repository contains documentation for [docs.katsute.dev](https://docs.katsute.dev).
 
- - [Contributing](https://docs.katsute.dev/en/contributing)
+ - [Contributing](https://docs.katsute.dev/contributing)
  - [License](https://github.com/KatsuteDev/docs.katsute.dev/blob/main/LICENSE)

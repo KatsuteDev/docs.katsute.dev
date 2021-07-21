@@ -34,11 +34,6 @@ pre, code {
 
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
 
-    transition:
-        color 0.25s ease-in-out,
-        background-color 0.25s ease-in-out
-        !important;
-
     outline: none;
     scroll-behavior: smooth;
 
@@ -124,6 +119,19 @@ img {
 nav li::before {
 
     content: none;
+
+}
+
+a, button {
+
+    &, &:hover {
+
+        transition:
+            color 0.25s ease-in-out,
+            background-color 0.25s ease-in-out
+            !important;
+
+    }
 
 }
 
