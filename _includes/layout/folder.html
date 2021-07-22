@@ -64,7 +64,7 @@
                                         </a>
                                     </li>
                                 {% endif %}
-                            {% elsif __dirs == 3 %}
+                            {% elsif __dirs == 3 and __dir[0] == __this_folder %}
                                 {% assign __dir3 = __dir[2] | downcase %}
                                 {% comment %} if folder index file {% endcomment %}
                                 {% if __dir3 == "index.html" or __dir3 == "readme.md" %}
