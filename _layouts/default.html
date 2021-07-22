@@ -19,8 +19,18 @@ layout: compress
 
             {% comment %} content {% endcomment %}
             {% assign __this = page.path | split: '/' | slice: 0 | first | downcase %}
+            {% assign __folder = page.path | split: '/' | slice: 1 | first | downcase %}
+            {% assign __sub_folder = page.path | split: '/' | slice: 2 | first | downcase %}
+
             {% if __this == "index.html" or __this == "readme.md" %}
                 {% include layout/homepage.html %}
+            {% elsif
+                __folder == "index.html" or
+                __folder == "readme.md" or
+                __sub_folder == "index.html" or
+                __sub_folder == "readme.md"
+            %}
+                {% include layout/folder.html %}
             {% elsif __this == "404.html" %}
                 {{ content }}
             {% else %}

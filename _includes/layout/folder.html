@@ -1,0 +1,97 @@
+{% assign __sorted = site.pages | sort: "title", "last" %}
+
+<div class="container-lg">
+    <div class="my-5 mx-1 mx-{{ site.breakpoint }}-5">
+        {% include breadcrumb.liquid path=page.path %}
+        <article class="m-0">
+            {% comment %} header {% endcomment %}
+            <div>
+                <h1 class="my-4">
+                    {% include function/resolve-name.liquid path=page.path %}
+                </h1>
+                {% if page.description %}
+                    <p class="mb-4 h5">
+                        {{ page.description }}
+                    </p>
+                {% endif %}
+            </div>
+            <hr>
+            {% comment %} list {% endcomment %}
+            {% assign __this_folder = page.path | split: '/' | first %}
+            {% assign __this_sub_folder = page.path | split :'/' | slice: 1 | first %}
+            {% assign __this_sub_folder_dcase = __this_sub_folder | downcase %}
+
+            {% if __this_sub_folder_dcase == "index.html" or __this_sub_folder_dcase == "readme.md" %}
+                {% assign __is_subfolder = false %}
+                {% assign __rel = __this_folder | prepend: '/' %}
+            {% else %}
+                {% assign __is_subfolder = true %}
+                {% assign __rel = __this_folder | prepend: '/' | append: '/' | append: __this_sub_folder %}
+            {% endif %}
+
+            <div>
+                <ul>
+                    {% comment %} manual links {% endcomment %}
+                    {% for __link in site.data.links[__rel] %}
+                        {% assign __external = __link | last | slice: 0 %}
+                        {% unless __external == '/' %}
+                            {% assign __external = true %}
+                        {% else %}
+                            {% assign __external = false %}
+                        {% endunless %}
+                        <li>
+                            <a class="text-decoration-none" href="{{ __link | last }}" {% if __external %}target="_blank"{% endif %}>
+                                {{ __link | first }}
+                                {% if __external %}
+                                    <i class="fas fa-external-link-alt fa-fw"></i>
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    {% comment %} file generated links {% endcomment %}
+                    {% for __page in __sorted %}
+                        {% assign __dir = __page.path | split: '/' %}
+                        {% assign __dirs = __dir | size %}
+                        {% if __is_subfolder == false %}
+                            {% comment %} if inside this folder {% endcomment %}
+                            {% if __dirs == 2 and __dir[0] == __this_folder %}
+                                {% comment %} if file in immediate directory {% endcomment %}
+                                {% assign __file = __dir[1] | downcase %}
+                                {% if __file != "index.html" and __file != "readme.md" %}
+                                    <li>
+                                        <a class="text-decoration-none" href="{% include function/resolve-path.liquid path=__page.path noext="true" %}">
+                                            {% include function/resolve-name.liquid path=__page.path %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% elsif __dirs == 3 %}
+                                {% assign __dir3 = __dir[2] | downcase %}
+                                {% comment %} if folder index file {% endcomment %}
+                                {% if __dir3 == "index.html" or __dir3 == "readme.md" %}
+                                    <li>
+                                        <a class="text-decoration-none" href="{% include function/resolve-path.liquid path=__page.path noext="true" %}">
+                                            {% include function/resolve-name.liquid path=__page.path %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% else %}
+                            {% comment %} if inside this sub folder {% endcomment %}
+                            {% if __dirs == 3 and __dir[0] == __this_folder and __dir[1] == __this_sub_folder %}
+                                {% comment %} if file in immediate directory {% endcomment %}
+                                {% assign __file = __dir[2] | downcase %}
+                                {% if __file != "index.html" and __file != "readme.md" %}
+                                    <li>
+                                        <a class="text-decoration-none" href="{% include function/resolve-path.liquid path=__page.path noext="true" %}">
+                                            {% include function/resolve-name.liquid path=__page.path %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </article>
+    </div>
+</div>
