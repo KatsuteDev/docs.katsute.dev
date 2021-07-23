@@ -1,4 +1,5 @@
 ---
 title: Mal4J
-description: temporary placeholder text
+description: |
+    Mal4J is a Java library for the MyAnimeList REST API.
 ---

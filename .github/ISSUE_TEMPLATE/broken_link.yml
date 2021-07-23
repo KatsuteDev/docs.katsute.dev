@@ -1,0 +1,41 @@
+name: Broken Link
+description: Report a broken or incorrect link
+labels: [bug, website]
+assignees: []
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Prerequisites
+      description: |
+        *If **all** checks are not passed then the issue will be closed.*
+      options:
+        - label: I have checked that no other similar issue already exists.
+          required: true
+
+  - type: input
+    id: broken-link
+    attributes:
+      label: Broken Link
+      description: |
+        Which page should be improved? (please provide a link)
+    validations:
+      required: true
+
+  - type: input
+    id: expected-link
+    attributes:
+      label: Expected Link
+      description: |
+        Where should the page redirect to?
+    validations:
+      required: false
+
+  - type: textarea
+    id: info
+    attributes:
+      label: Additional Information
+      description: |
+        Include any additional information.
+    validations:
+      required: false

@@ -14,7 +14,7 @@ body:
           required: true
 
   - type: textarea
-    id: issue
+    id: info
     attributes:
       label: Suggestion
       description: |

@@ -19,7 +19,7 @@
 {% else %}
     {% capture __title %}{% include function/resolve-name.liquid path=page.path %}{% endcapture %}
 {% endif %}
-<title>{{ __title | strip }}</title>
+<title>{{ __title | strip }} - Docs</title>
 
 {% comment %} dependencies {% endcomment %}
 

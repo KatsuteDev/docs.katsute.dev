@@ -11,6 +11,45 @@
 
     }
 
+    table {
+
+        @extend .align-middle;
+
+        @extend .table;
+        @extend .table-sm;
+        @extend .table-bordered;
+
+        td code { // prevent code blocks from being broken
+
+            @extend .text-nowrap;
+
+        }
+
+    }
+
+    kbd { // prevent  keystrokes from being broken
+
+        @extend .text-nowrap;
+
+    }
+
+    p + { // remove spacing between list
+
+        ol, ul {
+
+            margin-top: -1rem;
+
+        }
+
+    }
+
+    ol, ul { // spacing below lists
+
+        @extend .mb-3;
+
+    }
+
+
 }
 
 .markdown-toc {

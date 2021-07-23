@@ -14,7 +14,7 @@
             {% else %}
                 {% comment %} file name w/o ext. {% endcomment %}
                 {% assign __ldot = __name | split: '.' | size | minus: 1 %}
-                {% assign __name = __name | split: '.' | slice: 0, __ldot | join: '.' %}
+                {% assign __name = __name | split: '.' | slice: 0, __ldot | join: '.' | replace: '-', ' ' %}
             {% endif %}
             {% comment %} capitalize {% endcomment %}
             {% assign __words = __name | split: ' ' %}

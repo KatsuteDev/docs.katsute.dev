@@ -1,8 +1,15 @@
 /:
   GitHub: https://github.com/KatsuteDev
+/jcore:
+  Workflow Commands: https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#using-workflow-commands-to-access-toolkit-functions
+  Javadoc: /jcore/javadoc
+/desktop-flick:
+  GitHub: https://github.com/KatsuteDev/Desktop-Flick#readme
 /mal4j:
-  GitHub: https://github.com/Katsute/Mal4J
-  Docs: /mal4j/javadoc
-/mal4j/nested:
-  nested link: /test
-  alt: https://github.com/Katsute
+  GitHub: https://github.com/Katsute/Mal4J#readme
+  Javadoc: /mal4j/javadoc
+/rexedia:
+  GitHub: https://github.com/Ktt-Development/rexedia#readme
+/simplehttpserver:
+  GitHub: https://github.com/Ktt-Development/simplehttpserver#readme
+  Javadoc: /simplehttpserver/javadoc

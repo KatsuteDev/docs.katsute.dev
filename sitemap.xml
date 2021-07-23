@@ -8,6 +8,7 @@ layout: compress
         {% assign __head = __page.path | split: '/' %}
         {% if
             __head[0] != "404.html" and
+            __head[0] != "sitemap.xml" and
             __head[0] != "dependencies"
         %}
             <url>

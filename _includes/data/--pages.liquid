@@ -6,7 +6,8 @@
     {% if
         __page.url != '/' and
         __head[0] != "dependencies" and
-        __head[0] != "404.html"
+        __head[0] != "404.html" and
+        __head[1] != "javadoc"
     %}
         "{{ __page.url | slugify | remove: "-html" | remove: "-md" }}": {
             "title": "{% include function/resolve-name.liquid path = __page.path %}",
