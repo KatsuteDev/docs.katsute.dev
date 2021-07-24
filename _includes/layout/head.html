@@ -19,7 +19,35 @@
 {% else %}
     {% capture __title %}{% include function/resolve-name.liquid path=page.path %}{% endcapture %}
 {% endif %}
-<title>{{ __title | strip }} - Docs</title>
+{% assign __title = __title | strip | append: " - Docs" %}
+<title>{{ __title }}</title>
+
+{% comment %} SEO {% endcomment %}
+
+<link rel="canonical" href="{{ site.url }}{{ page.url | remove: ".html" | remove: ".md" }}">
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+
+<meta name="og:title" content="{{ __title }}">
+<meta name="og:description" content="{{ page.description }}">
+<meta name="og:site_name" content="KatsuteDev Documentation">
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://docs.katsute.dev/",
+        "logo": "https://docs.katsute.dev/dependencies/katsute/assets/favicon.png",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://docs.kttdevelopment.com?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "name": "{{ __title }}",
+        "description": "{{ page.description }}"
+    }
+</script>
 
 {% comment %} dependencies {% endcomment %}
 

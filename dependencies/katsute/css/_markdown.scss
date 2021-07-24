@@ -19,6 +19,8 @@
         @extend .table-sm;
         @extend .table-bordered;
 
+        min-width: 500px;
+
         td code { // prevent code blocks from being broken
 
             @extend .text-nowrap;
