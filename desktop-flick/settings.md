@@ -4,6 +4,8 @@ description: |
     Configuration options for Desktop Flick.
 ---
 
+# Settings
+
 On the first run a `config.json` file will be generated.
 
 Currently the only setting available is the port value.
