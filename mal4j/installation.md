@@ -26,7 +26,7 @@ If you want to quickly generate a token you can use this [python script](https:/
 
     You can create a new Client ID at [https://myanimelist.net/apiconfig](https://myanimelist.net/apiconfig).
 
-    ![Create ID](/dependencies/katsute/assets/screenshots/mal4j_setup_1.png)
+    ![Create ID](/mal4j/setup_1.png)
 
 ## 2. Register application
 
@@ -34,13 +34,13 @@ If you want to quickly generate a token you can use this [python script](https:/
 
     For users using local server authentication ([below](#authenticate-with-client-id-using-a-local-server)) set this to `http://localhost:5050` or whatever port you are using (port must be between `1` - `65535`).
 
-    ![Register application](/dependencies/katsute/assets/screenshots/mal4j_setup_2.png)
+    ![Register application](/mal4j/setup_2.png)
 
 ## 3. Retrieve Client ID
 
   - Copy **client ID** and **client secret** (if the application has a client secret), this will be used to generate an authorization code.
 
-    ![Copy client id and client secret](/dependencies/katsute/assets/screenshots/mal4j_setup_3.png)
+    ![Copy client id and client secret](/mal4j/setup_3.png)
 
 ## 4. Authentication
 

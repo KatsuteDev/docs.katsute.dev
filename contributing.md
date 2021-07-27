@@ -19,7 +19,7 @@ We only accept contributions for:
 
 # Use the 'make a contribution button'
 
-![Make a contribution](/dependencies/katsute/assets/screenshots/contributing.png)
+![Make a contribution](/dependencies/katsute/assets/contributing.png)
 
 To simplify making quick changes, at the bottom of each page there is a **make a contribution** button which will redirect you to the corrosponding page on our [repository](https://github.com/KatsuteDev/docs.katsute.dev).
 

@@ -38,21 +38,21 @@ Note that paths with spaces in them may require quotations `"` around the path.
 
 In order to get to the path variables you have to open the system environment variables. This can be achieved by searching for **environment variables** in the search bar or in the control panel search bar.
 
-![search 'environment variables'](/dependencies/katsute/assets/screenshots/rexedia_setup_1.png)
+![search 'environment variables'](/rexedia/setup_1.png)
 
 Next click on **Environment Variables**, this will open the user and system variables.
 
-![click 'Environment Variables'](/dependencies/katsute/assets/screenshots/rexedia_setup_2.png)
+![click 'Environment Variables'](/rexedia/setup_2.png)
 
 Select the **Path** variable then **Edit** to edit the variables.
 
-![select path & click 'Edit...'](/dependencies/katsute/assets/screenshots/rexedia_setup_3.png)
+![select path & click 'Edit...'](/rexedia/setup_3.png)
 
 Press **New** and add the path to the rexedia installation. The path should be the folder containing the executable, not the exe file itself.
 
 **Example:** `C:\Program Files\rexedia`
 
-![add new with rexedia path](/dependencies/katsute/assets/screenshots/rexedia_setup_4.png)
+![add new with rexedia path](/rexedia/setup_4.png)
 
 After this is completed Rexedia should be accessible from the command prompt without needing the full path.
 
