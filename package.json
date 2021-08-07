@@ -35,7 +35,7 @@
     },
     "homepage": "https://github.com/KatsuteDev/docs.katsute.dev#readme",
     "devDependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.3",
+        "@fortawesome/fontawesome-free": "^5.15.4",
         "bootstrap": "^5.0.2",
         "copyfiles": "^2.4.1",
         "lunr": "^2.3.9",
