@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"dev.katsute.jcore","l":"AnnotationProperties"},{"p":"dev.katsute.jcore","l":"AnnotationProperties.Builder"},{"p":"dev.katsute.jcore","l":"Workflow"}]
