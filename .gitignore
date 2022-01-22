@@ -1,4 +1,13 @@
-.vscode
+node_modules
 
-/dist
-/.jekyll-cache
+_src/*
+!_src/dependencies
+!_src/favicon.ico
+
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+
+.vscode

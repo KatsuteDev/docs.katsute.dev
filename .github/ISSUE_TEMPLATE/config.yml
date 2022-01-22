@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Do not report issues here
+    url: https://github.com/orgs/KatsuteDev/repositories
+    about: Report documentation issues in their respective repositories.

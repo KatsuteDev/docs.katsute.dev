@@ -1,0 +1,38 @@
+{
+    "name": "docs.katsute.dev",
+    "version": "main",
+    "description": "",
+    "private": true,
+    "scripts": {
+        "// -- dev -- //": "",
+        "clean": "rimraf _includes/readme & rimraf _layouts/compress.html & rimraf _src/dependencies/node & rimraf _site",
+        "prune": "npm prune && npm i --package-lock --ignore-scripts",
+        "update": "npm update -D && npm i --package-lock --ignore-scripts && npm run prune",
+        "// -- build -- //": "",
+        "build": "ts-node build.ts",
+        "build:jekyll": "jekyll build",
+        "// -- prepare -- //": "",
+        "prepare": "npm run clean && npm run build",
+        "// -- start -- //": "",
+        "start": "jekyll serve"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KatsuteDev/docs.katsute.dev.git"
+    },
+    "author": "Katsute",
+    "license": "CC-BY-NC-SA-4.0",
+    "bugs": {},
+    "homepage": "https://github.com/KatsuteDev/docs.katsute.dev#readme",
+    "devDependencies": {
+        "@types/follow-redirects": "^1.13.1",
+        "@types/node": "^17.0.10",
+        "@types/rimraf": "^3.0.2",
+        "copyfiles": "^2.4.1",
+        "extract-zip": "^2.0.1",
+        "follow-redirects": "^1.14.7",
+        "rimraf": "^3.0.2",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.5"
+    }
+}

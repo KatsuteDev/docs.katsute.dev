@@ -1,0 +1,44 @@
+# development options
+livereload: true
+port: 8000
+
+disable_disk_cache: true
+strict_front_matter: true
+
+sass:
+  load_paths:
+    - _src/dependencies/katsute/css
+  style: compressed
+
+collections:
+  src:
+    output: true
+    permalink: /:path:output_ext
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default-container
+
+exclude:
+  - CNAME
+  - _config.yml
+  - LICENSE
+  - README.md
+  - '*.json'
+  - '*.ts'
+
+# third-party
+compress_html:
+  clippings: all
+  comments: all
+  endings: []
+  ignore:
+    envs: []
+  blanklines: false
+  profile: false
+  startings: []
+
+# variables
+url: https://docs.katsute.dev
