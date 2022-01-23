@@ -1,6 +1,7 @@
 node_modules
 
 _src/*
+!_src/404.html
 !_src/dependencies
 !_src/favicon.ico
 
