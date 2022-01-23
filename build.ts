@@ -3,7 +3,6 @@
 import extract from 'extract-zip';
 import { https } from 'follow-redirects';
 import rimraf from 'rimraf';
-import prependFile from 'prepend-file';
 
 import fs from "fs";
 import path from "path";
