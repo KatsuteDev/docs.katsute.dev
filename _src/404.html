@@ -1,0 +1,24 @@
+---
+docs:
+  - mal4j
+  - jcore
+---
+<!DOCTYPE html>
+{% capture newline %}
+{% endcapture %}
+{% capture space %} {% endcapture %}
+{% capture now %}{{ site.time | date: "%F %R" }} EST{% endcapture %}
+<html>
+    <head>
+        <title>KatsuteDev Documentation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 style="margin: 0;">Index of /</h1>
+        <hr>
+        <pre>
+{% for doc in page.docs %}/<a href="/{{ doc }}">{{ doc }}</a>{% assign s = doc | size %}{% assign r = 50 | minus: s %}{% for i in (1..r) %}{{ space }}{% endfor %}{{ now }}{% unless forloop.last %}{{ newline }}{% endunless %}{% endfor %}</pre>
+        <hr>
+        <i>GitHub Static Pages generated from <a href="https://github.com/KatsuteDev/docs.katsute.dev">https://github.com/KatsuteDev/docs.katsute.dev</a></i>
+    </body>
+</html>

@@ -1,10 +1,5 @@
 User-agent: *
 
-Disallow: /*/javadoc
-Disallow: /*/javadoc/*
-Disallow: /*/404
 Disallow: /404
 Disallow: /dependencies
 Disallow: /dependencies/*
-
-Sitemap: https://docs.katsute.dev/sitemap.xml

@@ -1,6 +1,1 @@
-_includes/import linguist-vendored
-_layouts/compress.html linguist-vendored
-
 dependencies/katsute/** -linguist-vendored
-
-**/javadoc linguist-documentation
