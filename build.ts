@@ -16,7 +16,7 @@ class Main {
 
         /* docs */ {
             await this.downloadJavadoc("https://github.com/KatsuteDev/Mal4J/releases/download/2.7.2/mal4j-2.7.2-javadoc.jar", "mal4j");
-            await this.downloadJavadoc("https://github.com/KatsuteDev/OneMTA/releases/download/1.0.0/onemta-1.0.0-javadoc.jar", "onemta");
+            await this.downloadJavadoc("https://github.com/KatsuteDev/OneMTA/releases/download/1.0.1/onemta-1.0.1-javadoc.jar", "onemta");
             await this.downloadJavadoc("https://github.com/KatsuteDev/JCore/releases/download/2.0.0/jcore-2.0.0-javadoc.jar", "jcore");
         }
     }
