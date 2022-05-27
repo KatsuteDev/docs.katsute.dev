@@ -265,12 +265,34 @@ div.nav-list-search {
 
 ul#ui-id-1 {
 
-    li.ui-autocomplete-category {
+    overflow-x: hidden !important;
+
+    .ui-autocomplete-category {
 
         color: $color-white;
-        background-color: $color-blue !important;
+        background-color: $color-dark !important;
 
     }
+
+    .ui-state-active, .ui-button, .ui-state-active {
+
+        padding: .25rem !important;
+        border: 0 !important;
+
+    }
+
+    .ui-state-active,
+    .ui-widget-content .ui-state-active,
+    .ui-widget-header .ui-state-active,
+    a.ui-button:active,
+    .ui-button:active,
+    .ui-button.ui-state-active:hover {
+
+        color: $color-blue !important;
+        background: none !important;
+
+    }
+
 
 }
 
@@ -366,7 +388,8 @@ section[class$="-summary"], div[id$="-summary"] {
 
 .inherited-list {
 
-    > h3[id^="methods-inherited-from-"] {
+    > h3[id^="methods-inherited-from-"],
+    > h2[id^="nested-classes-inherited-from-"] {
 
         color: white !important;
         background-color: $color-dark !important;
