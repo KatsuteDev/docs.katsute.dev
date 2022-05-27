@@ -1,10 +1,54 @@
 ---
 ---
 
+// Copyright (C) 2022 Katsute <https://github.com/Katsute>
+
+$heading-selector: h1, h2, h3, h4, h5, h6;
+
+$text-selector: $heading-selector, p, b, i, span;
+
+$color-white        : #F3F2F1;
+$color-blue         : #3278be;
+$color-blue-lighter : lighten($color-blue, 10);
+$color-blue-darker  : darken($color-blue, 10);
+$color-dark         : #202020;
+$color-light        : #404040;
+$color-lighter      : #808080;
+
 * {
 
+    font-family: "Open Sans", Arial, Helvetica, sans-serif, "Segoe UI Emoji" !important;
+
     outline: none;
-    font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+
+        height: 8px;
+        width : 8px;
+
+        /* Track */
+        &-track {
+
+            background: #202020;
+
+        }
+
+        /* Handle */
+        &-thumb {
+
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+
+            &:hover {
+
+                background: rgba(255, 255, 255, 0.35);
+
+            }
+
+        }
+
+    }
 
 }
 
@@ -18,32 +62,32 @@ pre, code {
 
 }
 
-$color-white        : #F3F2F1;
-$color-blue         : #3278be;
-$color-blue-lighter : lighten($color-blue, 10);
-$color-blue-darker  : darken($color-blue, 10);
-$color-dark         : #202020;
-$color-light        : #404040;
-$color-lighter      : #808080;
+body {
+
+    background-color: white !important;
+
+}
+
+main {
+
+    margin-bottom: 3rem !important;
+
+}
 
 /* -------------------------------------------------------------- */
 
-.link {
+a[href] {
 
-    a[href] {
+    transition: all .15s ease-in-out !important;
 
+    &, &:visited {
+
+        color: $color-blue !important;
         transition: all .15s ease-in-out !important;
 
-        &, &:visited {
+        &:hover {
 
-            color: $color-blue !important;
-            transition: all .15s ease-in-out !important;
-
-            &:hover{
-
-                color: $color-blue-darker !important;
-
-            }
+            color: $color-blue-darker !important;
 
         }
 
@@ -51,18 +95,26 @@ $color-lighter      : #808080;
 
 }
 
+a::after {
+
+    display: none !important;
+
+}
+
 .thin-header {
 
+    #{$heading-selector} {
+
+        color: $color-dark;
+
+        text-decoration: none;
+
+        font-style: normal;
+        font-weight: 300;
+
+    }
+
     > h{
-
-        &1, &2, &3, &4, &5, &6{
-
-            color: $color-dark !important;
-            text-decoration: none;
-            font-style: normal;
-            font-weight: 300;
-
-        }
 
         &1 { font-size: 2em; }
         &2 { font-size: 1.75em; }
@@ -73,58 +125,32 @@ $color-lighter      : #808080;
     }
 }
 
-::-webkit-scrollbar{
-
-    height: 8px;
-    width: 8px;
-
-    /* Track */
-    &-track {
-
-        background: $color-dark;
-
-    }
-
-    /* Handle */
-    &-thumb {
-
-        background: rgba(255,255,255,0.2);
-        border-radius: 5px;
-
-        &:hover{
-
-            background: rgba(255,255,255,0.35);
-
-        }
-    }
-}
-
 /* nav */
 nav[role="navigation"] {
 
-    .topNav, .bottomNav {
+    .top-nav, .bottom-nav {
 
         height: unset !important;
         padding: 7px 0px 7px 0px !important;
         margin: 0px 0px 0px 0px !important;
 
-        ul.navList {
+        ul.nav-list {
 
             margin-left: 5px;
             padding-bottom: 5px;
-            border-bottom: solid 1px $color-white;
 
         }
 
     }
 
-    .topNav, .subNav, .bottomNav {
+    .top-nav, .sub-nav, .bottom-nav {
 
-        ul.navList {
+        ul.nav-list {
 
             li {
 
                 > a {
+
                     color: $color-white !important;
 
                     &[href] {
@@ -144,7 +170,7 @@ nav[role="navigation"] {
 
                 }
 
-                &.navBarCell1Rev {
+                &.nav-bar-cell1-rev {
 
                     color: #F3F2F1 !important;
                     background-color: #3278be !important;
@@ -152,7 +178,7 @@ nav[role="navigation"] {
 
                 }
 
-                &:not(.navBarCell1Rev) {
+                &:not(.navBarCell1Rev):not(.nav-bar-cell1-rev) {
 
                     color: #808080 !important;
 
@@ -164,18 +190,32 @@ nav[role="navigation"] {
 
     }
 
-    .subNav {
+    .sub-nav {
 
-        color: $color-white;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+
+        color: $color-white !important;
         background-color: $color-dark !important;
 
-        ul.navList {
+        > div {
 
-            margin: 0;
+            padding-top: .5rem !important;
+            padding-bottom: .5rem !important;
+
+            &:first-child { padding-left: .5rem !important; }
+            &:last-child { padding-right: .5rem !important; }
+
+        }
+
+        ul.sub-nav-list {
+
+            margin: 0 !important;
 
             > li {
 
-                padding: 0 .5rem !important;
+                padding: 0 .1rem !important;
 
             }
 
@@ -183,50 +223,49 @@ nav[role="navigation"] {
 
     }
 
-    > div.fixedNav > div.subNav {
-
-        ul.navListSearch {
-
-            > li {
-
-                padding: 0 .5rem !important;
-
-                > input {
-
-                    outline: none !important;
-                    &#search {
-
-                        border          : solid 1px #CCCCCC !important;
-                        border-radius   : 4px;
-                        background-image: url("/dependencies/katsute/assets/glass.png") !important;
-                        transition: all .15s ease-in-out, box-shadow .15s ease-in-out !important;
-
-                        &:focus {
-
-                            border    : solid 1px $color-blue !important;
-                            box-shadow: 0 0 0 0.1rem rgba(148,187,226,.5) !important;
-
-                        }
-
-                    }
-                    &#reset {
-
-                        top: -5px !important;
-                        background-image: url("/dependencies/katsute/assets/x.png") !important;
-                        background-color: transparent !important;
-
-                    }
-                }
-            }
-        }
-    }
 }
 
 /* search */
 
-ul#ui-id-1{
+div.nav-list-search {
 
-    li.ui-autocomplete-category{
+    padding: 0 .5rem !important;
+
+    > input {
+
+        outline: none !important;
+
+        &#search-input {
+
+            border          : solid 1px #CCCCCC !important;
+            border-radius   : 4px;
+            background-image: url("/dependencies/katsute/assets/glass.png") !important;
+            transition: all .15s ease-in-out, box-shadow .15s ease-in-out !important;
+
+            &:focus {
+
+                border    : solid 1px $color-blue !important;
+                box-shadow: 0 0 0 0.1rem rgba(148,187,226,.5) !important;
+
+            }
+
+        }
+
+        &#reset-button {
+
+            top: -5px !important;
+            background-image: url("/dependencies/katsute/assets/x.png") !important;
+            background-color: transparent !important;
+
+        }
+
+    }
+
+}
+
+ul#ui-id-1 {
+
+    li.ui-autocomplete-category {
 
         color: $color-white;
         background-color: $color-blue !important;
@@ -236,115 +275,88 @@ ul#ui-id-1{
 }
 
 /* overview */
-main, ul.subNavList {
 
-    @extend.link;
+div.caption {
+
+    padding-left: 0 !important;
+
+    > span {
+
+        color: white !important;
+        background-color: $color-dark !important;
+
+        padding: .5rem;
+
+    }
 
 }
 
-table{
+section[class$="-summary"], div[id$="-summary"] {
+
+    border: 0;
+
+    > h2 { padding: 0 !important; }
+
+    .table-tabs, .caption {
+
+        padding-left: 0 !important;
+
+    }
+
+
+}
+
+.summary-table {
 
     border: 0px !important;
 
-    caption{
-
-        > span {
-
-            background-color: $color-blue !important;
-
-        }
-
-        span{
-
-            color: white !important;
-
-            a[href] {
-
-                &, &:visited {
-
-                    color: white !important;
-                    transition: all .15s ease-in-out !important;
-                    text-decoration: underline;
-
-                }
-
-                &:hover {
-
-                    color: white !important;
-
-                }
-            }
-
-            &:hover a {
-
-                color: white !important;
-
-            }
-        }
-
-        padding-left: 0px !important;
-
-    }
-
-    th tr {
+    > div {
 
         color: $color-dark !important;
 
-    }
+        &.odd-row-color { background-color: $color-white !important; }
+        &.even-row-color { background-color: white !important; }
 
-    tbody tr {
+        &.table-header {
 
-        .rowColor th, .rowColor td {
+            color: white !important;
 
-            background-color: $color-white !important;
+            &:not(.odd-row-color):not(.even-row-color) {
 
-        }
+                padding: .5rem;
 
-        .altColor th, .altColor td {
-
-            background-color: white !important;
-
-        }
-
-    }
-
-    tr:not(.altColor):not(.rowColor) > {
-
-        th.colFirst, th.colSecond, th.colLast {
-
-            color: $color-white;
-            background-color: $color-dark;
-            padding: 7px;
-
-        }
-    }
-}
-
-.memberSummary {
-
-    button, caption {
-
-        .activeTableTab, .tableTab {
-
-            > span {
-
-                transition: all .15s ease-in-out !important;
-                color: white !important;
+                color: $color-white !important;
+                background-color: $color-dark !important;
 
             }
 
         }
 
-        .activeTableTab > span, .tableTab > span:hover {
+    }
+
+}
+
+.table-tabs {
+
+    button {
+
+        &.active-table-tab, &.table-tab {
+
+            color: white !important;
+
+            transition: all .15s ease-in-out !important;
+
+        }
+
+        &.active-table-tab, &.table-tab:hover {
 
             background-color: $color-blue-darker !important;
 
         }
 
-        .tableTab > span {
+        &.table-tab {
 
             background-color: $color-blue !important;
-            text-decoration: underline;
 
         }
 
@@ -352,39 +364,52 @@ table{
 
 }
 
-.packageHierarchyLabel {
+.inherited-list {
 
-    color: $color-dark !important;
+    > h3[id^="methods-inherited-from-"] {
 
-}
-
-.packagesSummary {
-
-    margin-top: 1rem !important;
-
-    > caption {
-
-        padding-top: 0 !important;
+        color: white !important;
+        background-color: $color-dark !important;
 
     }
 
 }
 
-h1.bar {
+section[class$="-details"] {
 
-    color: $color-white !important;
+    border: 0;
+
+    .detail {
+
+        > h3 {
+
+            color: white !important;
+            background-color: $color-dark !important;
+
+        }
+
+    }
 
 }
 
-body {
+section.details {
 
-    background-color: white !important;
-    margin-bottom: 30px !important;
+    .detail {
+
+        > h3 {
+
+            color: white !important;
+            background-color: $color-dark !important;
+
+        }
+
+    }
 
 }
+
 /* background */
 
-.topNav, .bottomNav, footer, .bar {
+footer, .top-nav, .bottom-nav {
 
     background-color: $color-dark !important;
 
@@ -394,28 +419,27 @@ body {
 
 footer {
 
-    position: fixed;
-    width: 100%;
-    bottom: 0px;
+    position: fixed !important;
+    width: 100% !important;
+    bottom: 0px !important;
 
-    .subNav, .bottomNav {
 
-        display: none;
+    hr { display: none; }
 
-    }
-
-    p.legalCopy {
+    p.legal-copy {
 
         margin: .5rem !important;
 
         > small {
 
             color: #F3F2F1 !important;
-            visibility: hidden;
+            visibility: hidden !important;
 
             &::before {
+
                 visibility: visible;
                 content: "Copyright © Katsute 2022. All rights reserved";
+
             }
 
         }
@@ -423,69 +447,33 @@ footer {
 }
 
 /* content */
-h{
+#{$text-selector} {
 
-    &1, &2, &3, &4, &5, &6 {
+    &.title {
 
-        &.title {
+        color: $color-dark !important;
+        text-decoration: none;
+        font-weight: 300;
+        font-size: 2em;
 
-            color: $color-dark !important;
-            text-decoration: none;
-            font-weight: 300;
-            font-size: 2em;
-
-        }
     }
 }
 
-section[role="region"] > ul.blockList > li.blockList,
-div.contentContainer > ul.blockList > li.blockList > ul.blockList > li.blockList {
+section.summary > ul.summary-list > li,
+section.details > ul.details-list > li {
 
-    &, &Last {
+    section {
 
         border-radius: 1rem;
         padding: 1rem !important;
 
         @extend .thin-header;
 
-        > h {
+        > #{$heading-selector} {
 
-            &1, &2, &3, &4, &5, &6{
-
-                margin: -19px 0 0 0 !important;
-                padding: 0 !important;
-                color: $color-dark;
-
-            }
-
-        }
-
-        > ul.blockList {
-
-            &, &Last {
-
-                margin: 1rem 0 0 0 !important;
-
-                > li.blockList {
-
-                    padding: 0 1rem 1rem 1rem !important;
-                    margin: 0 !important;
-
-                    > h {
-
-                        &1, &2, &3, &4, &5, &6 {
-
-                            margin: -19px -1rem 1rem -1rem !important;
-                            background-color: $color-dark !important;
-                            color: white !important;
-
-                        }
-
-                    }
-
-                }
-
-            }
+            padding: .25rem .5rem;
+            margin: 0 !important;
+            color: $color-dark;
 
         }
 
@@ -494,25 +482,11 @@ div.contentContainer > ul.blockList > li.blockList > ul.blockList > li.blockList
 }
 
 /* index/help */
-div.contentContainer{
 
-    .description, .details {
-
-        dl dt {
-
-            color: $color-dark !important;
-        }
-
-    }
-
-    section[role="region"], div.block {
-
-        @extend .thin-header;
-
-    }
+.index-page, .help-page {
 
     /* hyperlink buttons */
-    > a[href] {
+    a[href^="#I:"] {
 
         &, &:visited {
 
@@ -541,17 +515,21 @@ div.contentContainer{
 
     }
 
-    /* description */
-    dd {
+    section.summary {
 
-        margin-left: 35px;
+        dd {
 
-        div.block {
+            margin-left: 35px;
 
-            padding-left: 10px;
-            border-left : 3px solid $color-lighter;
+            div.block {
+
+                padding-left: 10px;
+                border-left : 3px solid $color-lighter;
+
+            }
 
         }
 
     }
+
 }
