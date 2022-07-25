@@ -1,0 +1,8 @@
+module:OneMTA
+dev.katsute.onemta
+dev.katsute.onemta.attribute
+dev.katsute.onemta.bus
+dev.katsute.onemta.exception
+dev.katsute.onemta.railroad
+dev.katsute.onemta.subway
+dev.katsute.onemta.types
